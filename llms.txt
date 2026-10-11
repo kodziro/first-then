@@ -2,7 +2,7 @@
 
 > First Then Board is a free First-Then board that runs in the web browser. It shows two picture cards, "First" a task and "Then" something the child wants, and is made for parents, teachers and therapists who support children with autism, ADHD, speech and language needs, and toddlers. There is no account, and all boards and photos stay on the user's device.
 
-Developer: Natalia Jakubczyk-Gajewska (Apps for Parents).
+Made by: Natalia Jakubczyk-Gajewska (Apps for Parents). Contact: appsforparents@gmail.com
 Website: https://first-then.app/
 Type: web app (not an App Store app). Language: English.
 Price: free. No account, no ads.
@@ -25,9 +25,22 @@ Price: free. No account, no ads.
 - Several boards: save more than one board, for example Morning, School and Therapy.
 - Full screen (child mode): shows only the board, with no editing. Exit by holding the close button for about one second. On iPad the full screen button works in Safari. On iPhone, full screen works only when the board is opened from the Home Screen icon.
 - Big text: larger words on the cards.
-- Print: print one pair or all pairs as a clean paper board, with icons and photos.
+- Print: a free printable First-Then board. Print one pair or all pairs; each pair prints on its own page, in landscape, with icons and photos included.
 - Backup: export all boards and photos to one file, and import it on another device or browser.
 - Add to Home Screen: the board can be added to the Home Screen of a phone or tablet and opened like an app.
+
+## How to make a First-Then board
+
+1. Choose the task: tap the pencil on the First card and pick an icon, take a photo, or type a word for one small task.
+2. Choose the reward: tap the pencil on the Then card and put something there that the child really wants.
+3. Add more pairs if needed, with the plus button under the cards.
+4. Show the board on the screen, or open the menu and choose Print for a paper board.
+
+## Why First-Then works
+
+- The idea is called the Premack principle: first the less-wanted task, then the wanted one. The thing a child likes to do becomes the reason to start the harder thing.
+- When to move on: when the child follows First-Then (and First-Then-Next) calmly most of the time, try a full visual schedule that shows more steps of the day.
+- How to fade the board out: little by little. Show it only for the hard moments, later just say "first..., then...", and stop when the child no longer needs it.
 
 ## Privacy
 
@@ -36,9 +49,10 @@ Price: free. No account, no ads.
 - No account, no cookies, no ad networks, no trackers.
 - Card words and photos are never sent anywhere.
 
-## Main page
+## Pages
 
-- [First Then Board](https://first-then.app/): the board itself, a short guide on how to use a First-Then board, example pairs, tips for autism, ADHD and toddlers, and an FAQ.
+- [First Then Board](https://first-then.app/): the board itself, why First-Then works, how to make and use a First-Then board, example pairs, how to print it, tips for autism, ADHD and toddlers, and an FAQ.
+- [Privacy](https://first-then.app/privacy.html): what is saved on the device and what is never sent anywhere.
 
 ## FAQ
 

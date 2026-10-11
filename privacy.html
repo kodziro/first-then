@@ -4,13 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Privacy – First Then Board</title>
-<meta name="description" content="First Then Board privacy: your boards and photos stay on your device. No account, no cookies, no ad networks, no trackers.">
+<meta name="description" content="First Then Board privacy: your boards and photos stay on your device. No account, no cookies, no ads. Only anonymous usage counts.">
 <link rel="canonical" href="https://first-then.app/privacy.html">
 <meta name="theme-color" content="#F6F3EC">
 <meta name="color-scheme" content="light">
 <link rel="icon" href="favicon.ico" sizes="32x32">
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<!-- TelemetryDeck pageview (local copy, no CDN; sends the path only, no query string, no hash) -->
+<script defer src="telemetrydeck-web.js" data-app-id="B4DED0BE-CBC2-4D31-934C-26CB40726237"></script>
 <style>
 :root{
   --bg:#F6F3EC;
@@ -46,13 +48,13 @@ footer a{color:inherit}
     <p class="muted">Last updated: October 11, 2026</p>
 
     <div class="card">
-      <p><b>Short version:</b> your boards and photos stay on your device. We do not get them. There is no account, no cookies, no ad networks and no trackers.</p>
+      <p><b>Short version:</b> your boards and photos stay on your device. We do not get them. There is no account, no cookies and no ads. We only count anonymous events, like how often Print is used.</p>
     </div>
 
     <h2>What is saved, and where</h2>
     <ul>
       <li>Your boards, card words and photos are saved only on your device, inside your browser's storage (IndexedDB).</li>
-      <li>Nothing is uploaded. Photos never leave your device.</li>
+      <li>Your boards are never uploaded. Photos never leave your device.</li>
       <li>A backup file is made only when you tap Export. It is saved on your device, and you decide what to do with it.</li>
     </ul>
 
@@ -60,12 +62,24 @@ footer a{color:inherit}
     <ul>
       <li>No account and no sign-up. We do not ask for a name or an email address.</li>
       <li>No cookies.</li>
-      <li>No ad networks and no third-party trackers.</li>
-      <li>Card words, board names, photos and file names are never sent anywhere.</li>
+      <li>No ads and no ad networks. Nothing follows you to other sites.</li>
+      <li>Card words, board names, photos and file names never leave your device.</li>
     </ul>
 
     <h2>Usage counts</h2>
-    <p>Today this site sends no usage data at all. Later we may count simple, anonymous events, for example how often the Print button is used. These counts will never include card words, board names, photos or file names, and we will update this page before that starts.</p>
+    <p>We count anonymous events to improve the app, for example how often the Print button is used. For this we use TelemetryDeck, a privacy-focused analytics service. The code runs from this site, and it sets no cookies and saves nothing in your browser.</p>
+    <p>What is sent:</p>
+    <ul>
+      <li>The name of the event, for example "print", with a few fixed values such as "2 cards" or "3 cards".</li>
+      <li>The page that was opened (the path only) and the site you came from.</li>
+      <li>Your browser's language setting.</li>
+      <li>What every browser sends with a web request: your browser and system version and the type of device.</li>
+      <li>With button events: a random number that is made new every time the page loads. It is not saved.</li>
+    </ul>
+    <p>What is never sent: card words, board names, photos and file names.</p>
+    <p>To count visitors, TelemetryDeck mixes the IP address, the browser details and a secret value that changes every day into a scrambled code. So it can tell that two page views on the same day came from the same visitor, but not on another day and not on another website.</p>
+    <p>Like any web request, these events reach TelemetryDeck from your IP address. TelemetryDeck uses the first part of it to guess the country, and says it never stores IP addresses. We never see your IP address.</p>
+    <p>TelemetryDeck rounds the time of each event to the hour and keeps the data on servers in Germany and the Netherlands.</p>
 
     <h2>Hosting</h2>
     <p>The site is hosted on GitHub Pages. Like any web host, GitHub may log technical data such as your IP address when the page loads. We do not use that data.</p>
@@ -84,7 +98,7 @@ footer a{color:inherit}
   </main>
 
   <footer>
-    <p><a href="/">First Then Board</a> · first-then.app · No cookies · No trackers · Your data stays on your device.</p>
+    <p><a href="/">First Then Board</a> · first-then.app · No cookies · No ads · Your data stays on your device.</p>
   </footer>
 </div>
 </body>

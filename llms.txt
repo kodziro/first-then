@@ -22,7 +22,7 @@ Price: free. No account, no ads.
 - Done: tap the First card when the task is done. It gets a check mark and a short confetti celebration, and the Then card lights up.
 - First-Then-Next: an optional third card for children who are ready to see one more step.
 - Pairs: prepare several First-Then pairs in a row. The child sees one pair at a time, and "Next" moves to the following pair.
-- Several boards: save more than one board, for example Morning, School and Therapy.
+- Several boards: save more than one board, for example Morning, School and Therapy. A new board can start empty or from one of four templates with ready First-Then pairs: Morning, Bedtime, School or Meals.
 - Full screen (child mode): shows only the board, with no editing. Exit by holding the close button for about one second. On iPad the full screen button works in Safari. On iPhone, full screen works only when the board is opened from the Home Screen icon.
 - Big text: larger words on the cards.
 - Print: a free printable First-Then board. Print one pair or all pairs; each pair prints on its own page, in landscape, with icons and photos included.
@@ -45,14 +45,15 @@ Price: free. No account, no ads.
 ## Privacy
 
 - All boards, card words and photos are stored only on the user's device, in the browser's storage (IndexedDB).
-- Nothing is uploaded. Photos never leave the device.
-- No account, no cookies, no ad networks, no trackers.
-- Card words and photos are never sent anywhere.
+- Boards are never uploaded. Photos never leave the device.
+- No account, no cookies, no ads.
+- The site counts anonymous usage events (for example how often Print is used) with TelemetryDeck, to improve the app. Nothing is saved in the browser for this.
+- Card words, board names and photos never leave the device.
 
 ## Pages
 
 - [First Then Board](https://first-then.app/): the board itself, why First-Then works, how to make and use a First-Then board, example pairs, how to print it, tips for autism, ADHD and toddlers, and an FAQ.
-- [Privacy](https://first-then.app/privacy.html): what is saved on the device and what is never sent anywhere.
+- [Privacy](https://first-then.app/privacy.html): what is saved on the device, which anonymous usage counts are sent, and what is never sent.
 
 ## FAQ
 

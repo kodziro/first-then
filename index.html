@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="First Then Board: a First card “Shoes on” and a Then card “Park”. Free, own photos, printable.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="version" content="1.3.2">
+<meta name="version" content="1.3.4">
 <meta name="theme-color" content="#F6F3EC">
 <meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -28,6 +28,8 @@
 <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="manifest.json">
+<!-- TelemetryDeck pageview (local copy, no CDN; sends the path only, no query string, no hash) -->
+<script defer src="telemetrydeck-web.js" data-app-id="B4DED0BE-CBC2-4D31-934C-26CB40726237"></script>
 
 <script type="application/ld+json">
 {
@@ -150,6 +152,14 @@
         },
         {
           "@type": "Question",
+          "name": "Can I have more than one board?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Open the ⋯ menu → Boards and tap “＋ New board”. Each board keeps its own pairs. You can also start a new board from a template: Morning, Bedtime, School or Meals."
+          }
+        },
+        {
+          "@type": "Question",
           "name": "Does it work on iPad and iPhone?",
           "acceptedAnswer": {
             "@type": "Answer",
@@ -169,7 +179,7 @@
           "name": "Do you track my child?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "No. No cookies, no ad networks, no trackers. Card words and photos are never sent anywhere."
+            "text": "No cookies, no ads, no accounts. We count anonymous events, like how often Print is used, to improve the app. Card words, board names and photos never leave your device."
           }
         }
       ]
@@ -525,6 +535,9 @@ dialog{max-height:calc(100dvh - 24px)}
 .tile.add .te{font-size:32px}
 .tile .tw{overflow:hidden;text-overflow:ellipsis;max-width:100%;white-space:nowrap}
 .mlist{display:flex;flex-direction:column}
+.tplhead{margin:18px 0 8px;font-size:15px;font-weight:700;color:var(--ink-2)}
+.tpls{display:flex;flex-direction:column;gap:8px}
+.tpls .btn{width:100%;border-color:var(--first)}
 .mrow{display:flex;align-items:center;gap:14px;width:100%;min-height:62px;padding:10px 4px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;font-size:17px;font-weight:700;position:relative}
 .mrow:last-child{border-bottom:0}
 .mrow .e{font-size:24px;width:34px;text-align:center;flex:none}
@@ -738,9 +751,10 @@ dialog{max-height:calc(100dvh - 24px)}
       <details><summary>Can my boards get lost?</summary><div><p>They can, because they live only in this browser. Clearing browser data deletes them, and Safari may delete site data after some days without a visit. To stay safe: add the board to your Home Screen, and export a backup now and then.</p></div></details>
       <details><summary>Can I print it?</summary><div><p>Yes. Open the ⋯ menu → <b>Print</b>, and choose “this pair” or “all pairs”. You get a clean paper board with your icons and photos.</p></div></details>
       <details><summary>What is First-Then-Next?</summary><div><p>It adds a third card (⋯ menu → 3 cards). Use it when the child is ready to see one more step, for example “First bath, then story, next bed”.</p></div></details>
+      <details><summary>Can I have more than one board?</summary><div><p>Yes. Open the ⋯ menu → <b>Boards</b> and tap “＋ New board”. Each board keeps its own pairs. You can also start a new board from a template: Morning, Bedtime, School or Meals.</p></div></details>
       <details><summary>Does it work on iPad and iPhone?</summary><div><p>Yes, in Safari. On iPad, ⛶ gives real full screen. On iPhone, Safari keeps its bars; for full screen, add the board to the Home Screen and open it from there.</p></div></details>
       <details><summary>Is there an app?</summary><div><p>Not yet. Tap “Want this as an iPhone/iPad app?” to tell us you want one. For full daily schedules try <a href="https://visual-schedule.app" data-out="visual-schedule" data-pos="faq">Visual Schedule</a>, and for rewards try <a href="https://token-board.app" data-out="token-board" data-pos="faq">Token Board</a>.</p></div></details>
-      <details><summary>Do you track my child?</summary><div><p>No. No cookies, no ad networks, no trackers. Card words and photos are never sent anywhere.</p></div></details>
+      <details><summary>Do you track my child?</summary><div><p>No cookies, no ads, no accounts. We count anonymous events, like how often Print is used, to improve the app. Card words, board names and photos never leave your device.</p></div></details>
     </section>
 
     <section id="more">
@@ -754,10 +768,10 @@ dialog{max-height:calc(100dvh - 24px)}
   </div>
 
   <footer>
-    <p>First Then Board · first-then.app · No cookies · No trackers · Your data stays on your device.</p>
+    <p>First Then Board · first-then.app · No cookies · No ads · Your data stays on your device.</p>
     <p>Made by Natalia Jakubczyk-Gajewska · Apps for Parents · <a href="mailto:appsforparents@gmail.com">appsforparents@gmail.com</a> · <a href="privacy.html">Privacy</a></p>
     <p>Icons are your device's emoji.</p>
-    <p>v1.3.2</p>
+    <p>v1.3.4</p>
   </footer>
 </div>
 
@@ -795,6 +809,8 @@ dialog{max-height:calc(100dvh - 24px)}
   <div class="dlg-body">
     <div class="mlist" id="boardList"></div>
     <button class="btn big" id="newBoardBtn" style="margin-top:12px;width:100%">＋ New board</button>
+    <h3 class="tplhead">Start from a template</h3>
+    <div class="tpls" id="tplList"></div>
   </div>
 </dialog>
 
@@ -872,7 +888,7 @@ dialog{max-height:calc(100dvh - 24px)}
 <dialog id="fakeDlg" aria-labelledby="fakeTitle">
   <div class="dlg-head"><h2 id="fakeTitle">Coming soon 📱</h2><button class="btn iconbtn" data-close aria-label="Close">✕</button></div>
   <div class="dlg-body">
-    <p style="margin-top:0">An iPhone/iPad app is not ready yet. Thank you for your interest!</p>
+    <p style="margin-top:0">An iPhone/iPad app is not ready yet. Thank you — your tap tells us people want it!</p>
     <p>Until then, add this page to your Home Screen. It works like an app.</p>
     <p>Our apps you can use today: <a href="https://visual-schedule.app" data-out="visual-schedule" data-pos="fakedoor">Visual Schedule</a> · <a href="https://token-board.app" data-out="token-board" data-pos="fakedoor">Token Board</a></p>
   </div>
@@ -883,9 +899,10 @@ dialog{max-height:calc(100dvh - 24px)}
 <div id="printArea" aria-hidden="true"></div>
 
 <!-- =====================================================================
-     ANALYTICS PLACEHOLDER — TelemetryDeck
-     Add the TelemetryDeck script/snippet HERE later, then wire it inside
-     the track() function in the script below (search: TELEMETRYDECK).
+     ANALYTICS — TelemetryDeck (local SDK copies, no CDN)
+     Pageview: telemetrydeck-web.js (tag in <head>).
+     Signals: track() in the script below loads telemetrydeck-sdk.js
+     (search: TELEMETRYDECK).
      RULE: never send card words, board names or photos. track() only
      passes allow-listed keys with fixed values.
      ===================================================================== -->
@@ -901,14 +918,84 @@ const SITE = {
 };
 
 /* =====================================================================
-   ANALYTICS (placeholder, privacy-safe)
+   ANALYTICS (TelemetryDeck, privacy-safe)
+   Same mechanism as assets/appstore-click.js on kidstimer.app,
+   visual-schedule.app, keepquiet.app and token-board.app, but the SDK
+   (@telemetrydeck/sdk 2.0.4) is a local file, not loaded from a CDN.
+   Cookieless: clientUser is a random value per page load, never stored.
+   If the SDK does not load (offline, blocked), nothing is sent and the
+   board works the same.
+   DO NOT UPDATE the two SDK files without re-checking:
+   - telemetrydeck-sdk.js: the _post override below copies 2.0.4 internals
+     (instance.target, _post).
+   - telemetrydeck-web.js: patched copy (sends the path only, no query
+     string, no hash). A fresh download would send the full URL again.
    ===================================================================== */
+const TD_APP_ID = "B4DED0BE-CBC2-4D31-934C-26CB40726237";
+const TD_SDK_URL = "./telemetrydeck-sdk.js";
+const TD_TEST_MODE = /^localhost$|^127(\.\d+){0,2}\.\d+$|^\[::1?]$/.test(location.hostname) || location.protocol === "file:";
+let td = null;
+let tdWaiting = [];                // signals fired before the SDK is ready (max 20)
+
+function tdRandomId() {
+  try { if (crypto && crypto.randomUUID) return crypto.randomUUID(); } catch (e) {}
+  return String(Date.now()) + "-" + Math.random().toString(36).slice(2);
+}
+function tdReferrerHost() {
+  try { return document.referrer ? new URL(document.referrer).hostname : ""; } catch (e) { return ""; }
+}
+// utm_source if present, else the host of an external referrer, else "none".
+// Only a plain host-like value passes; anything else becomes "other".
+function tdSource() {
+  let utm = "";
+  try { utm = new URLSearchParams(location.search).get("utm_source") || ""; } catch (e) {}
+  if (utm) { utm = utm.toLowerCase(); return /^[a-z0-9._-]{1,60}$/.test(utm) ? utm : "other"; }
+  const host = tdReferrerHost();
+  return host && host !== location.hostname ? host : "none";
+}
+function tdPage() {
+  const name = location.pathname.replace(/\/index\.html$/, "/").replace(/^.*\//, "").replace(/\.html$/, "");
+  return name || "home";
+}
+function tdSend(signal, safe) {
+  try {
+    // "source" is the traffic source on all our sites, so the card's own
+    // source (icon|photo|text|camera|library) goes out as "cardSource".
+    const params = Object.assign({}, safe);
+    if ("source" in params) { params.cardSource = params.source; delete params.source; }
+    td.signal(signal, Object.assign(params, {
+      page: tdPage(),
+      source: tdSource(),
+      path: location.pathname,
+      referrer: tdReferrerHost() || "none",
+    })).catch(() => {});
+  } catch (e) {}
+}
+try {
+  import(TD_SDK_URL).then(mod => {
+    const instance = new mod.default({ appID: TD_APP_ID, clientUser: tdRandomId(), testMode: TD_TEST_MODE });
+    // Same request as the SDK's own _post (pinned 2.0.4), plus keepalive so
+    // the browser finishes the POST even while it follows an outbound link.
+    instance._post = body => fetch(instance.target, {
+      method: "POST",
+      mode: "cors",
+      keepalive: true,
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    td = instance;
+    tdWaiting.forEach(w => tdSend(w[0], w[1]));
+    tdWaiting = [];
+  }).catch(() => { tdWaiting = null; /* SDK unavailable: no signals */ });
+} catch (e) { tdWaiting = null; }
+
 const ANALYTICS_KEYS = {           // only these keys, only these values
   position: /^[a-z0-9-]{1,24}$/,   // fixed UI positions we set in code
   target:   /^[a-z0-9-]{1,24}$/,   // fixed link ids we set in code
   mode:     /^(2|3)$/,
   source:   /^(icon|photo|text|camera|library)$/,
   scope:    /^(one|all)$/,
+  template: /^(Morning|Bedtime|School|Meals)$/,   // fixed template names only
 };
 function track(signal, params = {}) {
   const safe = {};
@@ -917,8 +1004,10 @@ function track(signal, params = {}) {
     const v = String(params[k]);
     if (re && re.test(v)) safe[k] = v;
   }
-  // TELEMETRYDECK: send here, e.g. window.td && window.td.signal(signal, safe);
+  // TELEMETRYDECK: only `safe` (allow-listed) goes out.
   // Never pass card words, board names, photos or file names.
+  if (td) tdSend(signal, safe);
+  else if (tdWaiting && tdWaiting.length < 20) tdWaiting.push([signal, safe]);
   if (location.hostname === "localhost") console.debug("[track]", signal, safe);
 }
 
@@ -1048,6 +1137,30 @@ function seedBoards() {
     newPair(ic("👟","Shoes on"), ic("🌳","Park"), ic("🏠","Home")),
   ]}];
 }
+
+// Ready-made boards (Boards dialog). Two cards per pair; the third card stays empty.
+const BOARD_TEMPLATES = [
+  { emoji: "🌅", name: "Morning", pairs: () => [
+    newPair(ic("👕","Get dressed"), ic("🥣","Breakfast")),
+    newPair(ic("🪥","Brush teeth"), ic("🧸","Play")),
+    newPair(ic("👟","Shoes on"), ic("🚗","Car")),
+  ]},
+  { emoji: "🌙", name: "Bedtime", pairs: () => [
+    newPair(ic("🛁","Bath"), ic("🧸","Play")),
+    newPair(ic("🪥","Brush teeth"), ic("📚","Story")),
+    newPair(ic("👕","Pyjamas"), ic("🛏️","Bed")),
+  ]},
+  { emoji: "🏫", name: "School", pairs: () => [
+    newPair(ic("🪑","Sit down"), ic("🎵","Music")),
+    newPair(ic("📝","Work"), ic("☀️","Break")),
+    newPair(ic("🧹","Clean up"), ic("🎮","Play")),
+  ]},
+  { emoji: "🍽️", name: "Meals", pairs: () => [
+    newPair(ic("🪑","Sit at table"), ic("📱","Tablet")),
+    newPair(ic("🥦","Vegetables"), ic("🍦","Ice cream")),
+    newPair(ic("💧","Drink"), ic("🧸","Toy")),
+  ]},
+];
 
 let saveTimers = {};
 function saveBoard(b = board()) {
@@ -1644,6 +1757,26 @@ async function newBoard() {
   $("#boardsDlg").close();
   renderAll();
 }
+function newBoardFromTemplate(t) {
+  const mode = board().mode;
+  // only the untouched starter board is there: the template board takes its place
+  const only = S.boards.length === 1 ? S.boards[0] : null;
+  if (only && only.seed && only.seedSig === cardsSig(only)) { S.boards = []; DB.del("boards", only.id).catch(() => {}); }
+  let name = t.name;
+  for (let n = 2; S.boards.some(x => x.name === name); n++) name = `${t.name} ${n}`;
+  const b = { id: uid(), name, mode, current: 0, created: Date.now(), pairs: t.pairs() };
+  S.boards.push(b); S.activeId = b.id; saveActive(); saveBoard(b);
+  $("#boardsDlg").close();
+  renderAll();
+  track("template-add", { template: t.name });
+}
+function renderTemplates() {
+  for (const t of BOARD_TEMPLATES) {
+    const btn = el("button", "btn", `${t.emoji} ${t.name}`);
+    btn.onclick = () => newBoardFromTemplate(t);
+    $("#tplList").appendChild(btn);
+  }
+}
 async function renameBoard(id) {
   const b = S.boards.find(x => x.id === id); if (!b) return;
   const name = await askText("Rename board", "", b.name);
@@ -1880,6 +2013,7 @@ function wire() {
   $("#printOne").onclick = () => doPrint("one");
   $("#printAll").onclick = () => doPrint("all");
   $("#newBoardBtn").onclick = newBoard;
+  renderTemplates();
   $("#exportBtn").onclick = exportBackup;
   $("#importBtn").onclick = () => $("#importInput").click();
   $("#importInput").onchange = e => { importBackup(e.target.files[0]); e.target.value = ""; };

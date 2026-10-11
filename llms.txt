@@ -22,7 +22,7 @@ Price: free. No account, no ads.
 - Done: tap the First card when the task is done. It gets a check mark and a short confetti celebration, and the Then card lights up.
 - First-Then-Next: an optional third card for children who are ready to see one more step.
 - Pairs: prepare several First-Then pairs in a row. The child sees one pair at a time, and "Next" moves to the following pair.
-- Several boards: save more than one board, for example Morning, School and Therapy. A new board can start empty or from one of four templates with ready First-Then pairs: Morning, Bedtime, School or Meals.
+- Several boards: the app starts with five boards: My board, Morning, Bedtime, School and Meals. The last four come with ready First-Then pairs. Tap the board name above the cards to switch boards. In the Boards dialog a new board can start empty or from one of the same four templates: Morning, Bedtime, School or Meals.
 - Full screen (child mode): shows only the board, with no editing. Exit by holding the close button for about one second. On iPad the full screen button works in Safari. On iPhone, full screen works only when the board is opened from the Home Screen icon.
 - Big text: larger words on the cards.
 - Print: a free printable First-Then board. Print one pair or all pairs; each pair prints on its own page, in landscape, with icons and photos included.

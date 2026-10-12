@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="First Then Board: a First card “Shoes on” and a Then card “Park”. Free, own photos, printable.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="version" content="1.3.5">
+<meta name="version" content="1.4.0">
 <meta name="theme-color" content="#F6F3EC">
 <meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -91,6 +91,7 @@
         "Big text",
         "Print one pair or all pairs, photos included",
         "Backup export and import",
+        "Works offline after the first visit",
         "No account needed",
         "Boards and photos stay on the device"
       ],
@@ -164,6 +165,14 @@
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Yes, in Safari. On iPad, ⛶ gives real full screen. On iPhone, Safari keeps its bars; for full screen, add the board to the Home Screen and open it from there."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does it work offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes, after the first visit. The board is saved in your browser, so it opens without internet. Your boards and photos are already on your device."
           }
         },
         {
@@ -753,6 +762,7 @@ dialog{max-height:calc(100dvh - 24px)}
       <details><summary>What is First-Then-Next?</summary><div><p>It adds a third card (⋯ menu → 3 cards). Use it when the child is ready to see one more step, for example “First bath, then story, next bed”.</p></div></details>
       <details><summary>Can I have more than one board?</summary><div><p>Yes. The board starts with five boards: My board, Morning, Bedtime, School and Meals. Tap the board name above the cards to switch, or add your own. Each board keeps its own pairs. You can also start a new board from a template: Morning, Bedtime, School or Meals.</p></div></details>
       <details><summary>Does it work on iPad and iPhone?</summary><div><p>Yes, in Safari. On iPad, ⛶ gives real full screen. On iPhone, Safari keeps its bars; for full screen, add the board to the Home Screen and open it from there.</p></div></details>
+      <details><summary>Does it work offline?</summary><div><p>Yes, after the first visit. The board is saved in your browser, so it opens without internet. Your boards and photos are already on your device.</p></div></details>
       <details><summary>Is there an app?</summary><div><p>Not yet. Tap “Want this as an iPhone/iPad app?” to tell us you want one. For full daily schedules try <a href="https://visual-schedule.app" data-out="visual-schedule" data-pos="faq">Visual Schedule</a>, and for rewards try <a href="https://token-board.app" data-out="token-board" data-pos="faq">Token Board</a>.</p></div></details>
       <details><summary>Do you track my child?</summary><div><p>No cookies, no ads, no accounts. We count anonymous events, like how often Print is used, to improve the app. Card words, board names and photos never leave your device.</p></div></details>
     </section>
@@ -771,7 +781,7 @@ dialog{max-height:calc(100dvh - 24px)}
     <p>First Then Board · first-then.app · No cookies · No ads · Your data stays on your device.</p>
     <p>Made by Natalia Jakubczyk-Gajewska · Apps for Parents · <a href="mailto:appsforparents@gmail.com">appsforparents@gmail.com</a> · <a href="privacy.html">Privacy</a></p>
     <p>Icons are your device's emoji.</p>
-    <p>v1.3.5</p>
+    <p>v1.4.0</p>
   </footer>
 </div>
 
@@ -1814,8 +1824,25 @@ function setMode(m) {
 /* =====================================================================
    FULLSCREEN / FOCUS MODE
    ===================================================================== */
+/* Keep the screen awake in full screen (Screen Wake Lock API).
+   If the API is missing or the request is refused: nothing happens, no message. */
+let wakeLock = null;
+async function wakeOn() {
+  try {
+    if (!("wakeLock" in navigator) || wakeLock || document.visibilityState !== "visible") return;
+    const lock = await navigator.wakeLock.request("screen");
+    if (wakeLock || !document.body.classList.contains("focus")) { lock.release().catch(() => {}); return; }
+    wakeLock = lock;
+    lock.addEventListener("release", () => { if (wakeLock === lock) wakeLock = null; });
+  } catch (e) {}
+}
+function wakeOff() {
+  const lock = wakeLock; wakeLock = null;
+  try { if (lock) { const r = lock.release(); if (r && r.catch) r.catch(() => {}); } } catch (e) {}
+}
 function enterFocus() {
   document.body.classList.add("focus");
+  wakeOn();
   const de = document.documentElement;
   const req = de.requestFullscreen || de.webkitRequestFullscreen;
   if (req) { try { const r = req.call(de); if (r && r.catch) r.catch(() => {}); } catch (e) {} }
@@ -1824,6 +1851,7 @@ function enterFocus() {
 }
 function exitFocus() {
   document.body.classList.remove("focus");
+  wakeOff();
   const fe = document.fullscreenElement || document.webkitFullscreenElement;
   if (fe) { const ex = document.exitFullscreen || document.webkitExitFullscreen; try { const r = ex.call(document); if (r && r.catch) r.catch(() => {}); } catch (e) {} }
   renderStage();
@@ -1841,10 +1869,12 @@ function setupExitHold() {
   ["pointerup", "pointerleave", "pointercancel"].forEach(ev => b.addEventListener(ev, stop));
   b.addEventListener("click", (e) => { if (e.detail === 0) exitFocus(); }); // keyboard
   b.addEventListener("contextmenu", e => e.preventDefault());
-  const onFs = () => { if (!(document.fullscreenElement || document.webkitFullscreenElement) && document.body.classList.contains("focus")) { document.body.classList.remove("focus"); renderStage(); } };
+  const onFs = () => { if (!(document.fullscreenElement || document.webkitFullscreenElement) && document.body.classList.contains("focus")) { document.body.classList.remove("focus"); wakeOff(); renderStage(); } };
   document.addEventListener("fullscreenchange", onFs);
   document.addEventListener("webkitfullscreenchange", onFs);
   document.addEventListener("keydown", e => { if (e.key === "Escape" && document.body.classList.contains("focus")) exitFocus(); });
+  // the browser drops the wake lock when the page is hidden: ask again when it is visible in full screen
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible" && document.body.classList.contains("focus")) wakeOn(); });
 }
 
 /* =====================================================================
@@ -2087,6 +2117,21 @@ function wire() {
   if (S.settings.lastDay !== today) { S.settings.daysUsed = (S.settings.daysUsed || 0) + 1; S.settings.lastDay = today; saveSettings(); }
   setupPWA();
   renderAll();
+})();
+
+/* =====================================================================
+   OFFLINE — service worker (sw.js). Only on https or localhost; fails silently.
+   A new version installs in the background and is used from the next page load.
+   ===================================================================== */
+(function setupOffline() {
+  try {
+    if (!("serviceWorker" in navigator)) return;
+    const local = /^localhost$|^127(\.\d+){0,2}\.\d+$|^\[::1?]$/.test(location.hostname);
+    if (location.protocol !== "https:" && !local) return;
+    const register = () => { try { navigator.serviceWorker.register("sw.js").catch(() => {}); } catch (e) {} };
+    if (document.readyState === "complete") register();
+    else window.addEventListener("load", register, { once: true });
+  } catch (e) {}
 })();
 </script>
 </body>

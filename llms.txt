@@ -23,11 +23,12 @@ Price: free. No account, no ads.
 - First-Then-Next: an optional third card for children who are ready to see one more step.
 - Pairs: prepare several First-Then pairs in a row. The child sees one pair at a time, and "Next" moves to the following pair.
 - Several boards: the app starts with five boards: My board, Morning, Bedtime, School and Meals. The last four come with ready First-Then pairs. Tap the board name above the cards to switch boards. In the Boards dialog a new board can start empty or from one of the same four templates: Morning, Bedtime, School or Meals.
-- Full screen (child mode): shows only the board, with no editing. Exit by holding the close button for about one second. On iPad the full screen button works in Safari. On iPhone, full screen works only when the board is opened from the Home Screen icon.
+- Full screen (child mode): shows only the board, with no editing. Exit by holding the close button for about one second. The screen stays on in full screen where the browser supports it. On iPad the full screen button works in Safari. On iPhone, full screen works only when the board is opened from the Home Screen icon.
 - Big text: larger words on the cards.
 - Print: a free printable First-Then board. Print one pair or all pairs; each pair prints on its own page, in landscape, with icons and photos included.
 - Backup: export all boards and photos to one file, and import it on another device or browser.
 - Add to Home Screen: the board can be added to the Home Screen of a phone or tablet and opened like an app.
+- Offline: after the first visit the board is saved in the browser and opens without an internet connection.
 
 ## How to make a First-Then board
 
@@ -61,6 +62,7 @@ Price: free. No account, no ads.
 - Where are my photos stored? Only on your device, inside the browser's storage. They are never uploaded to a server.
 - Can my boards get lost? Yes, because they live only in that browser. Clearing the browser data deletes them, and Safari may delete site data after some days without a visit. To protect them, add the board to the Home Screen and export a backup from time to time.
 - Can I print it? Yes. Open the menu, choose Print, then "this pair" or "all pairs".
+- Does it work offline? Yes, after the first visit. The board is saved in the browser, so it opens without internet.
 - Is there an iPhone or iPad app? Not yet. First Then Board is a web app that works in the browser on iPhone and iPad.
 
 ## Related tools by the same maker

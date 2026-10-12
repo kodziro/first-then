@@ -1,7 +1,11 @@
 /* First Then Board — outbound click signal for the guide pages
    (printable/, first-then-next/, autism/, toddlers/, first-then-vs-visual-schedule/).
    Same TelemetryDeck code and the same ANALYTICS_KEYS allow-list as index.html; keep both in sync.
-   Sends one signal only: "appstore-click" {target, position}, when a link with data-out is tapped.
+   Signals (fixed values only):
+   - "appstore-click" {target, position}: a link with data-out is tapped.
+   - "printable-download" {file, paper}: a PDF download button on /printable/ is tapped.
+   - "guide-to-board" {position, target}: a button that opens the board is tapped
+     (position = the folder name of the guide page, target = board | board-3).
    Cookieless: clientUser is a random value per page load, never stored. Nothing is saved in the browser.
    If the SDK does not load (offline, blocked), nothing is sent and the page works the same.
    DO NOT UPDATE telemetrydeck-sdk.js without re-checking: the _post override below copies
@@ -64,12 +68,19 @@ try {
 } catch (e) { tdWaiting = null; }
 
 const ANALYTICS_KEYS = {           // only these keys, only these values (same list as index.html)
-  position: /^[a-z0-9-]{1,24}$/,   // fixed UI positions we set in code
+  position: /^[a-z0-9-]{1,40}$/,   // fixed UI positions we set in code (also a guide page's folder name)
   target:   /^[a-z0-9-]{1,24}$/,   // fixed link ids we set in code
   mode:     /^(2|3)$/,
   source:   /^(icon|photo|text|camera|library)$/,
   scope:    /^(one|all|blank)$/,
   template: /^(Morning|Bedtime|School|Meals)$/,   // fixed template names only
+  days:       /^(1|2-3|4-7|8\+)$/,   // rough group of days of use, never the exact number
+  standalone: /^(yes|no)$/,          // opened from the Home Screen icon or not
+  boards:     /^(1|2-5|6\+)$/,       // rough count
+  photos:     /^(0|1-5|6\+)$/,       // rough count
+  action:     /^(shown|closed|new|open)$/,
+  file:       /^(blank-2|blank-3|labels)$/,
+  paper:      /^(a4|letter)$/,
 };
 function track(signal, params = {}) {
   const safe = {};
@@ -84,9 +95,22 @@ function track(signal, params = {}) {
   if (location.hostname === "localhost") console.debug("[track]", signal, safe);
 }
 
-// outbound links (fixed ids only)
+// Which PDF: "/printables/first-then-next-blank-a4.pdf" -> { file: "blank-3", paper: "a4" }.
+function pdfParams(href) {
+  const m = /^\/printables\/first-then-(blank|next-blank|labels)-(a4|letter)\.pdf$/.exec(href);
+  return m ? { file: m[1] === "blank" ? "blank-2" : m[1] === "next-blank" ? "blank-3" : "labels", paper: m[2] } : null;
+}
 document.addEventListener("click", e => {
-  const a = e.target.closest && e.target.closest("a[data-out]");
-  if (a) track("appstore-click", { target: a.dataset.out, position: a.dataset.pos });
+  const a = e.target.closest && e.target.closest("a");
+  if (!a) return;
+  const href = a.getAttribute("href") || "";
+  // outbound links (fixed ids only)
+  if (a.dataset && a.dataset.out) { track("appstore-click", { target: a.dataset.out, position: a.dataset.pos }); return; }
+  const pdf = pdfParams(href);
+  if (pdf) { track("printable-download", pdf); return; }
+  // the big buttons that open the board (not the logo, the breadcrumb or the footer link)
+  if (a.classList && a.classList.contains("btn") && (href === "/" || href === "/#mode=3")) {
+    track("guide-to-board", { position: tdPage(), target: href === "/" ? "board" : "board-3" });
+  }
 });
 })();

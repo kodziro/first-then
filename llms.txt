@@ -49,7 +49,7 @@ Price: free. No account, no ads.
 - All boards, card words and photos are stored only on the user's device, in the browser's storage (IndexedDB).
 - Boards are never uploaded. Photos never leave the device.
 - No account, no cookies, no ads.
-- The site counts anonymous usage events (for example how often Print is used) with TelemetryDeck, to improve the app. Nothing is saved in the browser for this.
+- The site counts anonymous usage events (for example how often Print is used) with TelemetryDeck, to improve the app. No cookies are set. The board counts on the device how many days it was used (it needs this for the "Add to Home Screen" tip); only a rough group (1, 2-3, 4-7 or 8+ days) is sent, together with rough groups for the number of boards and photos.
 - Card words, board names and photos never leave the device.
 
 ## Pages

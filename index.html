@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="First Then Board: a First card “Shoes on” and a Then card “Park”. Free, own photos, printable.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="version" content="1.5.0">
+<meta name="version" content="1.5.1">
 <meta name="theme-color" content="#F6F3EC">
 <meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -438,6 +438,7 @@ dialog::backdrop{background:rgba(34,48,59,.45)}
 .more{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));margin-top:12px}
 .more a{display:flex;gap:14px;align-items:center;background:var(--surface);border-radius:20px;padding:16px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink)}
 .more a .e{font-size:40px}
+.more a img{width:52px;height:52px;border-radius:22.5%;flex:none;display:block}
 .more a span small{display:block;color:var(--ink-2);font-size:14px}
 footer a{color:inherit}
 footer{color:var(--ink-2);font-size:14px;padding:24px 0 calc(env(safe-area-inset-bottom) + 30px);text-align:center;border-top:1.5px solid var(--line);margin-top:30px}
@@ -784,9 +785,9 @@ dialog{max-height:calc(100dvh - 24px)}
     <section id="more">
       <h2>Next steps: more visual tools</h2>
       <div class="more">
-        <a href="https://visual-schedule.app" data-out="visual-schedule" data-pos="more"><span class="e" aria-hidden="true">🗓️</span><span><b>Visual Schedule</b><small>When First-Then works, move to a full picture schedule for the day.</small></span></a>
-        <a href="https://token-board.app" data-out="token-board" data-pos="more"><span class="e" aria-hidden="true">⭐</span><span><b>Token Board</b><small>Earn tokens toward a reward — great for longer tasks.</small></span></a>
-        <a href="https://kidstimer.app" data-out="kidstimer" data-pos="more"><span class="e" aria-hidden="true">⏳</span><span><b>Visual Timer for Kids</b><small>Shows how much time is left — helpful when waiting for “Then” is hard.</small></span></a>
+        <a href="https://visual-schedule.app" data-out="visual-schedule" data-pos="more"><img src="apps/visual-schedule.png" alt="" width="52" height="52" loading="lazy"><span><b>Visual Schedule</b><small>When First-Then works, move to a full picture schedule for the day.</small></span></a>
+        <a href="https://token-board.app" data-out="token-board" data-pos="more"><img src="apps/token-board.png" alt="" width="52" height="52" loading="lazy"><span><b>Token Board</b><small>Earn tokens toward a reward — great for longer tasks.</small></span></a>
+        <a href="https://kidstimer.app" data-out="kidstimer" data-pos="more"><img src="apps/kidstimer.png" alt="" width="52" height="52" loading="lazy"><span><b>Visual Timer for Kids</b><small>Shows how much time is left — helpful when waiting for “Then” is hard.</small></span></a>
       </div>
     </section>
   </div>
@@ -795,7 +796,7 @@ dialog{max-height:calc(100dvh - 24px)}
     <p>First Then Board · first-then.app · No cookies · No ads · Your data stays on your device.</p>
     <p>Made by Natalia Jakubczyk-Gajewska · Apps for Parents · <a href="mailto:appsforparents@gmail.com">appsforparents@gmail.com</a> · <a href="privacy.html">Privacy</a></p>
     <p>Icons are your device's emoji.</p>
-    <p>v1.5.0</p>
+    <p>v1.5.1</p>
   </footer>
 </div>
 
@@ -1016,12 +1017,19 @@ try {
 
 // The guide pages use a copy of this code and of this list in signals.js; keep both in sync.
 const ANALYTICS_KEYS = {           // only these keys, only these values
-  position: /^[a-z0-9-]{1,24}$/,   // fixed UI positions we set in code
+  position: /^[a-z0-9-]{1,40}$/,   // fixed UI positions we set in code (also a guide page's folder name)
   target:   /^[a-z0-9-]{1,24}$/,   // fixed link ids we set in code
   mode:     /^(2|3)$/,
   source:   /^(icon|photo|text|camera|library)$/,
   scope:    /^(one|all|blank)$/,
   template: /^(Morning|Bedtime|School|Meals)$/,   // fixed template names only
+  days:       /^(1|2-3|4-7|8\+)$/,   // rough group of days of use, never the exact number
+  standalone: /^(yes|no)$/,          // opened from the Home Screen icon or not
+  boards:     /^(1|2-5|6\+)$/,       // rough count
+  photos:     /^(0|1-5|6\+)$/,       // rough count
+  action:     /^(shown|closed|new|open)$/,
+  file:       /^(blank-2|blank-3|labels)$/,
+  paper:      /^(a4|letter)$/,
 };
 function track(signal, params = {}) {
   const safe = {};
@@ -1785,6 +1793,7 @@ async function newBoard() {
   S.boards.push(b); S.activeId = b.id; saveActive(); saveBoard(b);
   $("#boardsDlg").close();
   renderAll();
+  track("board-new");
 }
 function newBoardFromTemplate(t) {
   // the starter board of this template is still untouched: open it, do not make a copy
@@ -1793,7 +1802,7 @@ function newBoardFromTemplate(t) {
     S.activeId = same.id; saveActive();
     $("#boardsDlg").close();
     renderAll();
-    track("template-add", { template: t.name });
+    track("template-add", { template: t.name, action: "open" });
     return;
   }
   const mode = board().mode;
@@ -1806,7 +1815,7 @@ function newBoardFromTemplate(t) {
   S.boards.push(b); S.activeId = b.id; saveActive(); saveBoard(b);
   $("#boardsDlg").close();
   renderAll();
-  track("template-add", { template: t.name });
+  track("template-add", { template: t.name, action: "new" });
 }
 function renderTemplates() {
   for (const t of BOARD_TEMPLATES) {
@@ -1835,6 +1844,7 @@ function setMode(m) {
   const b = board(); if (b.mode === m) return;
   b.mode = m; b.pairs.forEach(p => p.step = Math.min(p.step, m - 1));
   saveBoard(); renderStage(); renderPairNav(); renderQueue();
+  track("mode-change", { mode: m });
 }
 
 /* =====================================================================
@@ -2038,15 +2048,15 @@ function setupPWA() {
   const isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
   const standalone = navigator.standalone === true || matchMedia("(display-mode: standalone)").matches;
   const returning = (S.settings.daysUsed || 0) >= 2;
-  if (returning && isIOS && !standalone && !S.settings.a2hsDismissed) $("#a2hsBanner").classList.add("show");
-  $("#a2hsClose").onclick = () => { $("#a2hsBanner").classList.remove("show"); S.settings.a2hsDismissed = true; saveSettings(); };
+  if (returning && isIOS && !standalone && !S.settings.a2hsDismissed) { $("#a2hsBanner").classList.add("show"); track("a2hs-banner", { action: "shown" }); }
+  $("#a2hsClose").onclick = () => { $("#a2hsBanner").classList.remove("show"); S.settings.a2hsDismissed = true; saveSettings(); track("a2hs-banner", { action: "closed" }); };
 
   let deferred = null;
   window.addEventListener("beforeinstallprompt", e => {
     e.preventDefault(); deferred = e;
     if (returning && !S.settings.installDismissed) $("#installBanner").classList.add("show");
   });
-  $("#installBtn").onclick = async () => { if (!deferred) return; deferred.prompt(); await deferred.userChoice.catch(() => {}); deferred = null; $("#installBanner").classList.remove("show"); };
+  $("#installBtn").onclick = async () => { if (!deferred) return; deferred.prompt(); const choice = await deferred.userChoice.catch(() => null); if (choice && choice.outcome === "accepted") track("install-accepted"); deferred = null; $("#installBanner").classList.remove("show"); };
   $("#installClose").onclick = () => { $("#installBanner").classList.remove("show"); S.settings.installDismissed = true; saveSettings(); };
 }
 
@@ -2135,7 +2145,7 @@ function wire() {
   wire();
   renderExamples();
   const ok = await DB.open();
-  if (!ok) $("#dbWarn").classList.add("show");
+  if (!ok) { $("#dbWarn").classList.add("show"); track("storage-blocked"); }
   try {
     const [boards, photos, settings, activeId] = await Promise.all([DB.all("boards"), DB.all("photos"), DB.get("meta", "settings"), DB.get("meta", "activeId")]);
     S.boards = (boards || []).sort((a, b) => (a.created || 0) - (b.created || 0));
@@ -2156,9 +2166,18 @@ function wire() {
     const b = board();
     if (b.mode !== 3) { b.mode = 3; saveBoard(b); }
     try { history.replaceState(null, "", location.pathname); } catch (e) {}
+    track("mode-link");
   }
   setupPWA();
   renderAll();
+  // Once per page load. Rough groups only: never an exact number, a name or a word.
+  const group = (n, steps) => { for (const [max, label] of steps) if (n <= max) return label; };
+  track("session-start", {
+    days: group(S.settings.daysUsed || 1, [[1, "1"], [3, "2-3"], [7, "4-7"], [Infinity, "8+"]]),
+    standalone: (navigator.standalone === true || matchMedia("(display-mode: standalone)").matches) ? "yes" : "no",
+    boards: group(S.boards.length, [[1, "1"], [5, "2-5"], [Infinity, "6+"]]),
+    photos: group(S.photos.size, [[0, "0"], [5, "1-5"], [Infinity, "6+"]]),
+  });
 })();
 
 /* =====================================================================

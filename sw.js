@@ -4,7 +4,7 @@
    - Only same-origin GET requests are handled. Everything else (for example the
      TelemetryDeck POSTs to another origin) is not touched and goes straight to the network.
    - Nothing personal is cached: boards and photos live in IndexedDB, not here. */
-const VERSION = "1.5.0";
+const VERSION = "1.5.1";
 const CACHE = "ft-v" + VERSION;
 const PAGE = "./";
 const PRECACHE = [
@@ -19,8 +19,11 @@ const PRECACHE = [
   "telemetrydeck-sdk.js",
   "signals.js"
 ];
-// Guide pages and printable PDFs (each PDF under 300 KB). Saved one by one: a missing file never stops the install.
+// Guide pages, printable PDFs (each under 300 KB) and app icons. Saved one by one: a missing file never stops the install.
 const PRECACHE_OPTIONAL = [
+  "apps/visual-schedule.png",
+  "apps/token-board.png",
+  "apps/kidstimer.png",
   "printable/",
   "first-then-next/",
   "autism/",

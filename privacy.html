@@ -68,16 +68,19 @@ footer a{color:inherit}
     </ul>
 
     <h2>Usage counts</h2>
-    <p>We count anonymous events to improve the app, for example how often the Print button is used. For this we use TelemetryDeck, a privacy-focused analytics service. The code runs from this site, and it sets no cookies and saves nothing in your browser.</p>
+    <p>We count anonymous events to improve the app, for example how often the Print button is used. For this we use TelemetryDeck, a privacy-focused analytics service. The code runs from this site, and it sets no cookies.</p>
+    <p>The board counts on your device how many days it was used. It needs this number to know when to show the “Add to Home Screen” tip. The number stays on your device. We send only a rough group: 1, 2-3, 4-7 or 8+ days.</p>
     <p>What is sent:</p>
     <ul>
       <li>The name of the event, for example "print", with a few fixed values such as "2 cards" or "3 cards".</li>
+      <li>Once when the board opens, four rough groups: days of use (1, 2-3, 4-7 or 8+), number of boards (1, 2-5 or 6+), number of photos (0, 1-5 or 6+), and whether the board was opened from the Home Screen icon (yes or no). Never the exact numbers.</li>
+      <li>On the guide pages: which PDF was downloaded (for example "blank board, A4") and that a button to the board was tapped.</li>
       <li>The page that was opened (the path only) and the site you came from.</li>
       <li>Your browser's language setting.</li>
       <li>What every browser sends with a web request: your browser and system version and the type of device.</li>
       <li>With button events: a random number that is made new every time the page loads. It is not saved.</li>
     </ul>
-    <p>What is never sent: card words, board names, photos and file names.</p>
+    <p>What is never sent: card words, board names, photos and the names of your files.</p>
     <p>To count visitors, TelemetryDeck mixes the IP address, the browser details and a secret value that changes every day into a scrambled code. So it can tell that two page views on the same day came from the same visitor, but not on another day and not on another website.</p>
     <p>Like any web request, these events reach TelemetryDeck from your IP address. TelemetryDeck uses the first part of it to guess the country, and says it never stores IP addresses. We never see your IP address.</p>
     <p>TelemetryDeck rounds the time of each event to the hour and keeps the data on servers in Germany and the Netherlands.</p>

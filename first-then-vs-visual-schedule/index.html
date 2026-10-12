@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>First-Then Board vs Visual Schedule vs Token Board: Which One to Use?</title>
+<meta name="description" content="First-Then board, visual schedule or token board? A simple comparison table: what each one shows, how many steps, and when to use which.">
+<link rel="canonical" href="https://first-then.app/first-then-vs-visual-schedule/">
+<meta property="og:type" content="article">
+<meta property="og:title" content="First-Then Board vs Visual Schedule vs Token Board: Which One to Use?">
+<meta property="og:description" content="First-Then board, visual schedule or token board? A simple comparison table: what each one shows, how many steps, and when to use which.">
+<meta property="og:url" content="https://first-then.app/first-then-vs-visual-schedule/">
+<meta property="og:site_name" content="First Then Board">
+<meta property="og:image" content="https://first-then.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="First Then Board: a First card “Shoes on” and a Then card “Park”. Free, own photos, printable.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="version" content="1.5.0">
+<meta name="theme-color" content="#F6F3EC">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<!-- TelemetryDeck pageview (local copy, no CDN; sends the path only, no query string, no hash) -->
+<script defer src="/telemetrydeck-web.js" data-app-id="B4DED0BE-CBC2-4D31-934C-26CB40726237"></script>
+<!-- Outbound click signal (appstore-click only; local SDK copy, allow-listed keys, nothing saved in the browser) -->
+<script defer src="/signals.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "@id": "https://first-then.app/first-then-vs-visual-schedule/#article",
+      "url": "https://first-then.app/first-then-vs-visual-schedule/",
+      "headline": "First-Then Board vs Visual Schedule vs Token Board: Which One to Use?",
+      "description": "First-Then board, visual schedule or token board? A simple comparison table: what each one shows, how many steps, and when to use which.",
+      "inLanguage": "en",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "isPartOf": {
+        "@id": "https://first-then.app/#website"
+      },
+      "author": {
+        "@id": "https://first-then.app/#maker"
+      },
+      "publisher": {
+        "@id": "https://first-then.app/#org"
+      },
+      "image": "https://first-then.app/og-image.png",
+      "name": "First-Then Board vs Visual Schedule vs Token Board: Which One to Use?",
+      "mainEntityOfPage": "https://first-then.app/first-then-vs-visual-schedule/"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://first-then.app/first-then-vs-visual-schedule/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://first-then.app/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "First-Then vs visual schedule",
+          "item": "https://first-then.app/first-then-vs-visual-schedule/"
+        }
+      ]
+    }
+  ]
+}
+</script>
+<style>
+:root{
+  --bg:#F6F3EC;
+  --surface:#FFFFFF;
+  --ink:#22303B;
+  --ink-2:#55636E;
+  --line:#E4DED2;
+  --first:#4F82E8;  --first-soft:#E5EEFD;
+  --then:#2F9E73;   --then-soft:#DDF3E9;
+  --shadow:0 2px 0 rgba(34,48,59,.06), 0 8px 24px rgba(34,48,59,.08);
+  --font: ui-rounded, "SF Pro Rounded", "Nunito", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font-size:17px;line-height:1.55;-webkit-text-size-adjust:100%}
+.wrap{max-width:760px;margin:0 auto;padding:calc(env(safe-area-inset-top) + 16px) 18px 0}
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:800;font-size:20px}
+.logo img{width:36px;height:36px;border-radius:9px}
+.crumbs{font-size:15px;color:var(--ink-2);margin:18px 0 0}
+.crumbs a{color:inherit}
+h1{font-size:clamp(28px,6vw,36px);line-height:1.15;margin:10px 0 6px;letter-spacing:-.01em}
+h2{font-size:clamp(22px,4.4vw,27px);line-height:1.2;margin:34px 0 8px;letter-spacing:-.01em}
+h3{font-size:18px;margin:16px 0 4px}
+p,ul,ol{margin:8px 0}
+ul,ol{padding-left:24px}
+li{margin:5px 0}
+a{color:var(--first)}
+.muted{color:var(--ink-2);font-size:15px}
+.lead{font-size:19px}
+.card{background:var(--surface);border-radius:20px;padding:16px 18px;margin:16px 0;box-shadow:var(--shadow)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:10px 22px;border-radius:18px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);font:inherit;font-weight:700;font-size:18px;text-decoration:none;text-align:center}
+.btn.primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.btn.small{min-height:44px;padding:8px 16px;font-size:16px;border-radius:14px}
+.files{list-style:none;padding:0;margin:12px 0;display:grid;gap:10px}
+.files li{background:var(--surface);border-radius:20px;padding:14px 18px;box-shadow:var(--shadow);margin:0}
+.files b{display:block;font-size:18px}
+.files span{display:block;color:var(--ink-2);font-size:15px;margin-bottom:8px}
+.files .cta{margin:0}
+.pairs{list-style:none;padding:0;display:grid;gap:8px}
+.pairs li{background:var(--surface);border-radius:16px;padding:10px 16px;box-shadow:var(--shadow);margin:0}
+.pairs small{display:block;color:var(--ink-2);font-size:14px}
+.tablebox{overflow-x:auto;margin:14px 0;border-radius:20px;box-shadow:var(--shadow);background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:16px}
+th,td{text-align:left;vertical-align:top;padding:10px 14px;border-bottom:1.5px solid var(--line)}
+tr:last-child th,tr:last-child td{border-bottom:0}
+thead th{background:var(--first-soft)}
+tbody th{width:24%}
+.sources{font-size:15px;color:var(--ink-2)}
+.sources li{margin:8px 0}
+.guides{list-style:none;padding:0;display:grid;gap:8px}
+.guides li{margin:0}
+.guides a{display:block;background:var(--surface);border-radius:16px;padding:12px 16px;box-shadow:var(--shadow);text-decoration:none;color:var(--ink);font-weight:700}
+.guides small{display:block;color:var(--ink-2);font-size:14px;font-weight:400}
+footer{color:var(--ink-2);font-size:14px;padding:24px 0 calc(env(safe-area-inset-bottom) + 30px);text-align:center;border-top:1.5px solid var(--line);margin-top:34px}
+footer a{color:inherit}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="logo" href="/"><img src="/icon-192.png" alt="" width="36" height="36">First Then Board</a>
+  <nav class="crumbs" aria-label="Breadcrumb"><a href="/">Home</a> › First-Then vs visual schedule</nav>
+
+  <main>
+    <h1>First-Then Board vs Visual Schedule vs Token Board: Which One to Use?</h1>
+    <p class="muted">Last updated: October 12, 2026</p>
+    <p class="lead">A First-Then board shows one task and what comes after it. A visual schedule shows many steps of the day in order. A token board shows how many times a child must do well to earn a reward. They answer three different questions, so the right one depends on what is hard for your child.</p>
+    <div class="cta"><a class="btn primary" href="/">Open the free board</a></div>
+<h2 id="table">What is the difference between the three tools?</h2>
+    <p>The difference is what the child sees. A First-Then board answers “what now, and what do I get?”, a visual schedule answers “what happens today?”, and a token board answers “how much more until my reward?”.</p>
+    <div class="tablebox">
+    <table>
+      <thead><tr><th></th><th>First-Then board</th><th>Visual schedule</th><th>Token board</th></tr></thead>
+      <tbody>
+        <tr><th>What it shows</th><td>One task and the reward after it</td><td>The steps of a routine or a day, in order</td><td>Tokens earned so far, and the reward at the end</td></tr>
+        <tr><th>Steps shown</th><td>2 (or 3 with a Next card)</td><td>About 4 to 10, sometimes the whole day</td><td>Not steps: usually 3 to 10 tokens</td></tr>
+        <tr><th>When to use it</th><td>To start a task the child does not want to do, and for changes from one activity to another</td><td>For routines with many steps, and for a child who worries about what comes later</td><td>For longer work, or to practise one behaviour many times</td></tr>
+        <tr><th>Typical age</th><td>Toddlers and older</td><td>Preschool age and older, or when First-Then is easy</td><td>About 3 to 4 years and older, when the child can wait for a reward</td></tr>
+        <tr><th>The reward comes</th><td>Right after one task</td><td>Often there is no reward; the plan itself helps</td><td>After the last token</td></tr>
+        <tr><th>Time to set up</th><td>A few seconds</td><td>Some minutes for each routine</td><td>A minute, plus choosing the reward</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="muted">The ages are a rule of thumb, not a rule. What your child can do matters more than the age.</p>
+
+    <h2 id="first-then">When should I use a First-Then board?</h2>
+    <p>Use a First-Then board when one task is the problem, right now. It is the smallest and fastest of the three tools.</p>
+    <ul>
+      <li>Your child does not want to start: shoes, teeth, homework.</li>
+      <li>It is hard to stop one activity and move to another.</li>
+      <li>Your child is young, or pictures are new to them.</li>
+      <li>A longer plan is too much to look at.</li>
+    </ul>
+    <p>It uses the Premack principle: a thing the child likes to do becomes the reason to do the thing they like less. You can read more in the guides for <a href="/autism/">autism</a> and <a href="/toddlers/">toddlers</a>.</p>
+
+    <h2 id="schedule">When should I use a visual schedule?</h2>
+    <p>Use a visual schedule when the problem is not one task but the whole routine, or not knowing what the day will bring.</p>
+    <ul>
+      <li>The morning or the evening has many steps, and you repeat each one many times.</li>
+      <li>Your child asks again and again what happens later.</li>
+      <li>Changes in the plan are hard, and you want to show them before they happen.</li>
+      <li>You want your child to do the routine with less help from you.</li>
+    </ul>
+    <p>A visual schedule is a visual support, like the First-Then board, only longer. Visual supports are one of the 28 evidence-based practices in the 2020 review by the National Clearinghouse on Autism Evidence and Practice (see Sources). For a full picture schedule on iPhone, iPad and Mac we make <a href="https://visual-schedule.app" data-out="visual-schedule" data-pos="guide-compare">Visual Schedule</a>.</p>
+
+    <h2 id="token">When should I use a token board?</h2>
+    <p>Use a token board when your child can already wait a little, and the task is too long for one reward.</p>
+    <ul>
+      <li>Homework with ten questions: one token for each two questions.</li>
+      <li>A therapy session with many short tries.</li>
+      <li>One behaviour you want to see more often, such as asking with words.</li>
+    </ul>
+    <p>The child earns a token each time, and gets the reward when the board is full. In the same 2020 review, reinforcement is one of the evidence-based practices, and it includes token systems. A token board is harder to understand than First-Then, because the reward comes later. Our app for this is <a href="https://token-board.app" data-out="token-board" data-pos="guide-compare">Token Board</a>.</p>
+
+    <h2 id="together">Can I use them together?</h2>
+    <p>Yes. They do different jobs, so they work well side by side.</p>
+    <ul>
+      <li><b>Schedule + First-Then:</b> the schedule shows the morning, and the First-Then board helps with the one hard step in it.</li>
+      <li><b>First-Then + tokens:</b> “First five tokens, then tablet.” The token board sits on the First card.</li>
+      <li><b>Schedule + tokens:</b> one token for each finished step of the routine.</li>
+    </ul>
+    <p>Add one tool at a time. Two new tools on the same day are confusing.</p>
+
+    <h2 id="start">Which one should I start with?</h2>
+    <p>Start with a First-Then board in most cases. It takes seconds to make, and it teaches the idea that all three tools need: pictures tell you what will happen, and the promise is kept.</p>
+    <p>Start with a visual schedule only if your child already understands pictures well and the main problem is a long routine.</p>
+
+    <h2 id="move">How do I know it is time to move on?</h2>
+    <p>Move on when the tool you use has become easy and a new kind of problem shows up.</p>
+    <ul>
+      <li>From First-Then to <a href="/first-then-next/">First-Then-Next</a>: your child follows two cards calmly most of the time.</li>
+      <li>From First-Then-Next to a visual schedule: three cards are easy, and your child wants to know what comes later.</li>
+      <li>To a token board: your child can wait for a reward, and the tasks are getting longer.</li>
+    </ul>
+    <p>You do not have to give up the First-Then board. Many families keep it for the hard moments of the day, next to a schedule.</p>
+    <h2 id="sources">Sources</h2>
+    <ul class="sources">
+    <li>Steinbrenner, J. R., Hume, K., Odom, S. L., Morin, K. L., Nowell, S. W., Tomaszewski, B., Szendrey, S., McIntyre, N. S., Yücesoy-Özkan, S., &amp; Savage, M. N. (2020). <i>Evidence-based practices for children, youth, and young adults with autism.</i> The University of North Carolina at Chapel Hill, Frank Porter Graham Child Development Institute, National Clearinghouse on Autism Evidence and Practice Review Team. <a href="https://ncaep.fpg.unc.edu/wp-content/uploads/EBP-Report-2020.pdf" rel="noopener">Report (PDF)</a></li>
+    <li>Sam, A., &amp; AFIRM Team (updated 2024). <i>Visual Supports: EBP brief packet.</i> Autism Focused Intervention Resources &amp; Modules (AFIRM), UNC Frank Porter Graham Child Development Institute. <a href="https://afirm.fpg.unc.edu/wp-content/uploads/Visual-Supports-Brief-Packet.pdf" rel="noopener">Brief packet (PDF)</a></li>
+    <li>Premack, D. (1959). Toward empirical behavior laws: I. Positive reinforcement. <i>Psychological Review, 66</i>(4), 219–233. <a href="https://doi.org/10.1037/h0040891" rel="noopener">doi.org/10.1037/h0040891</a></li>
+    </ul>
+    <p class="muted">This page is general information from the makers of First Then Board. It is not medical or therapy advice. Every child is different: if your child has a therapist or a teacher, ask them what fits your child.</p>
+
+    <h2 id="guides">More guides</h2>
+    <ul class="guides">
+    <li><a href="/printable/">Free printable First-Then board (PDF)<small>Blank templates and label cards, A4 and US Letter.</small></a></li>
+    <li><a href="/first-then-next/">First-Then-Next board<small>The 3-card board: what it is and when a child is ready.</small></a></li>
+    <li><a href="/autism/">First-Then board for autism<small>How to start, photos or icons, and how to fade it out.</small></a></li>
+    <li><a href="/toddlers/">First-Then board for toddlers<small>Tiny tasks, tiny rewards, potty training and tantrums.</small></a></li>
+    </ul>
+    <div class="cta"><a class="btn primary" href="/">Open the free board</a></div>
+  </main>
+
+  <footer>
+    <p><a href="/">First Then Board</a> · first-then.app · No cookies · No ads · Your data stays on your device.</p>
+    <p>Made by Natalia Jakubczyk-Gajewska · Apps for Parents · <a href="mailto:appsforparents@gmail.com">appsforparents@gmail.com</a> · <a href="/privacy.html">Privacy</a></p>
+    <p>v1.5.0</p>
+  </footer>
+</div>
+</body>
+</html>

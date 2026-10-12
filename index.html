@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="First Then Board: a First card “Shoes on” and a Then card “Park”. Free, own photos, printable.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="version" content="1.4.0">
+<meta name="version" content="1.5.0">
 <meta name="theme-color" content="#F6F3EC">
 <meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -90,6 +90,7 @@
         "Full screen child mode",
         "Big text",
         "Print one pair or all pairs, photos included",
+        "Blank printable First-Then template",
         "Backup export and import",
         "Works offline after the first visit",
         "No account needed",
@@ -140,7 +141,7 @@
           "name": "Can I print it?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Open the ⋯ menu → Print, and choose “this pair” or “all pairs”. You get a clean paper board with your icons and photos."
+            "text": "Yes. Open the ⋯ menu → Print, and choose “this pair” or “all pairs”. You get a clean paper board with your icons and photos. “Blank template” prints empty cards that you fill in by hand."
           }
         },
         {
@@ -474,6 +475,7 @@ footer{color:var(--ink-2);font-size:14px;padding:24px 0 calc(env(safe-area-inset
   .pfoot{font-size:9pt;color:#888;text-align:right;margin-top:4mm}
   .pm3 .pcard{height:120mm}
   .pm3 .pcard .ppic .pe{font-size:70pt}
+  .pcard .pline{height:16mm;margin:0 8mm 10mm;border-bottom:.6mm solid #999}
 }
 
 /* =================== v1.2 — simple first screen =================== */
@@ -723,6 +725,7 @@ dialog{max-height:calc(100dvh - 24px)}
     <section id="printable">
       <h2>Free printable First-Then board</h2>
       <p>You can print this board for free. Open the ⋯ menu → <b>Print</b> and choose “This pair” or “All pairs”. Each pair prints on its own page, in landscape, with your icons and photos included.</p>
+      <p>Want an empty one? Choose “Blank template”. It prints empty First and Then cards (and a Next card in 3-card mode), each with space for a picture and a line for the word. Draw, glue a photo or write on it by hand.</p>
       <p>A paper first then chart is handy on the fridge, in a school bag, or anywhere a screen is not a good idea.</p>
     </section>
 
@@ -758,13 +761,24 @@ dialog{max-height:calc(100dvh - 24px)}
       <details><summary>Is it free?</summary><div><p>Yes. The board is free in your browser. No account, no ads.</p></div></details>
       <details><summary>Where are my photos stored?</summary><div><p>Only on this device, inside your browser's storage (IndexedDB). They are never uploaded to a server and never sent to analytics. If you use another phone or browser, open the ⋯ menu → <b>Backup</b> → Export, and Import it there.</p></div></details>
       <details><summary>Can my boards get lost?</summary><div><p>They can, because they live only in this browser. Clearing browser data deletes them, and Safari may delete site data after some days without a visit. To stay safe: add the board to your Home Screen, and export a backup now and then.</p></div></details>
-      <details><summary>Can I print it?</summary><div><p>Yes. Open the ⋯ menu → <b>Print</b>, and choose “this pair” or “all pairs”. You get a clean paper board with your icons and photos.</p></div></details>
+      <details><summary>Can I print it?</summary><div><p>Yes. Open the ⋯ menu → <b>Print</b>, and choose “this pair” or “all pairs”. You get a clean paper board with your icons and photos. “Blank template” prints empty cards that you fill in by hand.</p></div></details>
       <details><summary>What is First-Then-Next?</summary><div><p>It adds a third card (⋯ menu → 3 cards). Use it when the child is ready to see one more step, for example “First bath, then story, next bed”.</p></div></details>
       <details><summary>Can I have more than one board?</summary><div><p>Yes. The board starts with five boards: My board, Morning, Bedtime, School and Meals. Tap the board name above the cards to switch, or add your own. Each board keeps its own pairs. You can also start a new board from a template: Morning, Bedtime, School or Meals.</p></div></details>
       <details><summary>Does it work on iPad and iPhone?</summary><div><p>Yes, in Safari. On iPad, ⛶ gives real full screen. On iPhone, Safari keeps its bars; for full screen, add the board to the Home Screen and open it from there.</p></div></details>
       <details><summary>Does it work offline?</summary><div><p>Yes, after the first visit. The board is saved in your browser, so it opens without internet. Your boards and photos are already on your device.</p></div></details>
       <details><summary>Is there an app?</summary><div><p>Not yet. Tap “Want this as an iPhone/iPad app?” to tell us you want one. For full daily schedules try <a href="https://visual-schedule.app" data-out="visual-schedule" data-pos="faq">Visual Schedule</a>, and for rewards try <a href="https://token-board.app" data-out="token-board" data-pos="faq">Token Board</a>.</p></div></details>
       <details><summary>Do you track my child?</summary><div><p>No cookies, no ads, no accounts. We count anonymous events, like how often Print is used, to improve the app. Card words, board names and photos never leave your device.</p></div></details>
+    </section>
+
+    <section id="guides">
+      <h2>Guides</h2>
+      <div class="more">
+        <a href="printable/"><span class="e" aria-hidden="true">🖨️</span><span><b>Free printable First-Then board (PDF)</b><small>Blank templates and label cards, A4 and US Letter.</small></span></a>
+        <a href="first-then-next/"><span class="e" aria-hidden="true">3️⃣</span><span><b>First-Then-Next board</b><small>The 3-card board: what it is and when a child is ready.</small></span></a>
+        <a href="autism/"><span class="e" aria-hidden="true">🧩</span><span><b>First-Then board for autism</b><small>How to start, photos or icons, and how to fade it out.</small></span></a>
+        <a href="toddlers/"><span class="e" aria-hidden="true">🧸</span><span><b>First-Then board for toddlers</b><small>Tiny tasks, tiny rewards, potty training and tantrums.</small></span></a>
+        <a href="first-then-vs-visual-schedule/"><span class="e" aria-hidden="true">⚖️</span><span><b>First-Then board vs visual schedule vs token board</b><small>A simple table: when to use which.</small></span></a>
+      </div>
     </section>
 
     <section id="more">
@@ -781,7 +795,7 @@ dialog{max-height:calc(100dvh - 24px)}
     <p>First Then Board · first-then.app · No cookies · No ads · Your data stays on your device.</p>
     <p>Made by Natalia Jakubczyk-Gajewska · Apps for Parents · <a href="mailto:appsforparents@gmail.com">appsforparents@gmail.com</a> · <a href="privacy.html">Privacy</a></p>
     <p>Icons are your device's emoji.</p>
-    <p>v1.4.0</p>
+    <p>v1.5.0</p>
   </footer>
 </div>
 
@@ -869,6 +883,7 @@ dialog{max-height:calc(100dvh - 24px)}
     <div class="bigchoices">
       <button class="btn" id="printOne"><span class="e">🃏</span>This pair</button>
       <button class="btn" id="printAll"><span class="e">🗂️</span>All pairs (<span id="printAllN"></span>)</button>
+      <button class="btn" id="printBlank" style="grid-column:1/-1"><span class="e">🗒️</span>Blank template</button>
     </div>
   </div>
 </dialog>
@@ -999,12 +1014,13 @@ try {
   }).catch(() => { tdWaiting = null; /* SDK unavailable: no signals */ });
 } catch (e) { tdWaiting = null; }
 
+// The guide pages use a copy of this code and of this list in signals.js; keep both in sync.
 const ANALYTICS_KEYS = {           // only these keys, only these values
   position: /^[a-z0-9-]{1,24}$/,   // fixed UI positions we set in code
   target:   /^[a-z0-9-]{1,24}$/,   // fixed link ids we set in code
   mode:     /^(2|3)$/,
   source:   /^(icon|photo|text|camera|library)$/,
-  scope:    /^(one|all)$/,
+  scope:    /^(one|all|blank)$/,
   template: /^(Morning|Bedtime|School|Meals)$/,   // fixed template names only
 };
 function track(signal, params = {}) {
@@ -1884,6 +1900,24 @@ async function doPrint(scope) {
   $("#printDlg").close();
   const b = board();
   const area = $("#printArea"); area.innerHTML = "";
+  if (scope === "blank") {           // empty cards: picture area + a line to write the word
+    const page = el("div", "ppage" + (b.mode === 3 ? " pm3" : ""));
+    const row = el("div", "prow");
+    for (let k = 0; k < b.mode; k++) {
+      if (k) row.appendChild(el("div", "parrow", "→"));
+      const card = el("div", "pcard");
+      card.appendChild(el("div", "ptag", ROLE_LABEL[k]));
+      card.appendChild(el("div", "ppic"));
+      card.appendChild(el("div", "pline"));
+      row.appendChild(card);
+    }
+    page.appendChild(row);
+    page.appendChild(el("div", "pfoot", SITE.domain));
+    area.appendChild(page);
+    track("print", { scope, mode: b.mode });
+    setTimeout(() => window.print(), 60);
+    return;
+  }
   const idxs = scope === "all" ? b.pairs.map((_, i) => i) : [Math.min(b.current, b.pairs.length - 1)];
   const imgs = [];
   for (const i of idxs) {
@@ -2054,6 +2088,7 @@ function wire() {
   $("#mBackup").onclick = () => { $("#menuDlg").close(); fillBackupDlg(); $("#backupDlg").showModal(); };
   $("#printOne").onclick = () => doPrint("one");
   $("#printAll").onclick = () => doPrint("all");
+  $("#printBlank").onclick = () => doPrint("blank");
   $("#newBoardBtn").onclick = newBoard;
   renderTemplates();
   $("#exportBtn").onclick = exportBackup;
@@ -2115,6 +2150,13 @@ function wire() {
   if (!S.boards.some(b => b.id === S.activeId)) S.activeId = S.boards[0].id;
   const today = new Date().toDateString();
   if (S.settings.lastDay !== today) { S.settings.daysUsed = (S.settings.daysUsed || 0) + 1; S.settings.lastDay = today; saveSettings(); }
+  // #mode=3 (the link on the First-Then-Next guide): open the active board with 3 cards.
+  // Only the hash is read, never a query string; the hash is removed from the address afterwards.
+  if (location.hash === "#mode=3") {
+    const b = board();
+    if (b.mode !== 3) { b.mode = 3; saveBoard(b); }
+    try { history.replaceState(null, "", location.pathname); } catch (e) {}
+  }
   setupPWA();
   renderAll();
 })();

@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="First Then Board: a First card “Shoes on” and a Then card “Park”. Free, own photos, printable.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="version" content="1.5.1">
+<meta name="version" content="1.5.2">
 <meta name="theme-color" content="#F6F3EC">
 <meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -206,9 +206,10 @@
   --ink:#22303B;
   --ink-2:#55636E;
   --line:#E4DED2;
-  --first:#4F82E8;  --first-soft:#E5EEFD;
-  --then:#2F9E73;   --then-soft:#DDF3E9;
-  --next:#8B6CCF;   --next-soft:#ECE6F8;
+  --first:#3670E5;  --first-soft:#E5EEFD;  /* v1.5.2: darker for AA contrast (was #4F82E8) */
+  --link:#2B68E3;   --first-ink:#2262E2;  /* blue text: links on bg/white, numbers on --first-soft */
+  --then:#278460;   --then-soft:#DDF3E9;
+  --next:#8362CC;   --next-soft:#ECE6F8;
   --accent:#F2A93B;
   --danger:#C9503F;
   --radius:24px;
@@ -222,7 +223,7 @@ body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);font
   padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
 button,input,select{font:inherit;color:inherit}
 button{cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent}
-a{color:var(--first)}
+a{color:var(--link)}
 img{max-width:100%}
 .wrap{max-width:1100px;margin:0 auto;padding:0 16px}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -418,7 +419,7 @@ dialog::backdrop{background:rgba(34,48,59,.45)}
 .lead{font-size:19px;color:var(--ink-2)}
 .steps{counter-reset:s;list-style:none;padding:0;margin:12px 0;display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .steps li{background:var(--surface);border-radius:20px;padding:16px;box-shadow:var(--shadow);counter-increment:s}
-.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--first-soft);color:var(--first);font-weight:800;margin-bottom:6px}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:32px;height:32px;border-radius:50%;background:var(--first-soft);color:var(--first-ink);font-weight:800;margin-bottom:6px}
 .examples{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));margin-top:12px}
 .ex{background:var(--surface);border-radius:20px;padding:12px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:10px}
 .ex .pair{display:flex;align-items:center;justify-content:space-around;gap:6px}
@@ -496,6 +497,7 @@ footer{color:var(--ink-2);font-size:14px;padding:24px 0 calc(env(safe-area-inset
 .boardchip{align-self:center;border:0;background:var(--surface-2);border-radius:999px;padding:6px 14px;min-height:36px;font-weight:700;color:var(--ink-2);font-size:15px}
 .boardchip::after{content:" ▾"}
 .boardchip[hidden]{display:none}
+.boardchip.pending{visibility:hidden}
 
 /* card: role color, tick checkbox, subtle edit */
 .card{--role:var(--first)}
@@ -504,16 +506,19 @@ footer{color:var(--ink-2);font-size:14px;padding:24px 0 calc(env(safe-area-inset
 .card.is-done{opacity:1}
 .card.is-done .pic, .card.is-done .word{opacity:.4;filter:grayscale(.6)}
 .card.is-active{animation:none}
-.card .tick{display:none;align-self:center;flex:none;margin:2px 0 14px;width:clamp(44px,20cqw,76px);height:clamp(44px,20cqw,76px);border-radius:50%;
-  border:4px solid var(--role);background:#fff;place-items:center;color:#fff;font-size:clamp(22px,11cqw,42px);font-weight:900;line-height:1}
+.card .tick{--tb:4px;position:relative;display:none;align-self:center;flex:none;margin:2px 0 14px;width:clamp(44px,20cqw,76px);height:clamp(44px,20cqw,76px);border-radius:50%;
+  border:var(--tb) solid var(--role);background:#fff;place-items:center;color:#fff;font-size:clamp(22px,11cqw,42px);font-weight:900;line-height:1}
 .card.is-active .tick{display:grid;animation:tickpulse 1.8s ease-in-out infinite}
 .card.is-done .tick{display:grid;background:var(--role);animation:tickpop .35s ease-out}
 .card.is-waiting .tick{display:grid;visibility:hidden}
-@keyframes tickpulse{0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(242,169,59,0)}50%{transform:scale(1.08);box-shadow:0 0 0 8px rgba(242,169,59,.25)}}
+/* pulse ring = a layer that only fades (opacity), so the animation runs on the compositor (v1.5.2; was an animated box-shadow) */
+.card.is-active .tick::after{content:"";position:absolute;inset:calc(-1 * var(--tb));border-radius:50%;box-shadow:0 0 0 8px rgba(242,169,59,.25);opacity:0;pointer-events:none;animation:tickring 1.8s ease-in-out infinite}
+@keyframes tickpulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes tickring{0%,100%{opacity:0}50%{opacity:1}}
 @keyframes tickpop{0%{transform:scale(.6)}70%{transform:scale(1.15)}100%{transform:scale(1)}}
 .card .word{padding:2px 8px 8px}
 .editbtn{top:46px;right:8px;width:40px;height:40px;border:0;background:rgba(255,255,255,.85);box-shadow:0 1px 4px rgba(34,48,59,.15);font-size:17px;border-radius:50%}
-.card .pic .plus{width:62%;aspect-ratio:1;border-radius:50%;border:3px dashed #BFB6A6;display:grid;place-items:center;font-size:clamp(36px,22cqw,90px);color:#A79E8E;font-weight:300}
+.card .pic .plus{width:62%;aspect-ratio:1;border-radius:50%;border:3px dashed #BFB6A6;display:grid;place-items:center;font-size:clamp(36px,22cqw,90px);color:#908470;font-weight:300}
 .card.is-empty .tick{visibility:hidden}
 
 .stage-actions{min-height:66px;padding:8px 0 0}
@@ -533,7 +538,7 @@ body.focus .exitbtn{width:44px;height:44px;padding:0;border-radius:50%;opacity:.
 /* phone portrait, 3 cards stacked */
 @media (max-width:640px) and (orientation:portrait){
   .stage.m3 .slot{aspect-ratio:auto;max-height:none}
-  .stage.m3 .card .tick{position:absolute;right:10px;bottom:10px;margin:0;width:44px;height:44px;font-size:22px;border-width:3px}
+  .stage.m3 .card .tick{position:absolute;right:10px;bottom:10px;margin:0;width:44px;height:44px;font-size:22px;--tb:3px;border-width:3px}
 }
 
 /* dialogs */
@@ -583,8 +588,8 @@ dialog{max-height:calc(100dvh - 24px)}
   .stage:is(.m2,.m3) .card .word{flex:1;min-width:0;text-align:left;align-self:stretch;display:flex;align-items:center;
     padding:8px 12px 8px 4px !important;font-size:clamp(18px,6.6cqw,28px) !important;word-break:normal;overflow-wrap:anywhere;hyphens:auto}
   .stage.m3 .card .word{font-size:clamp(16px,5.8cqw,22px) !important}
-  .stage:is(.m2,.m3) .card .tick{position:absolute;right:12px;bottom:12px;margin:0;width:52px;height:52px;font-size:26px;border-width:4px}
-  .stage.m3 .card .tick{width:44px;height:44px;font-size:22px;border-width:3px;right:10px;bottom:10px}
+  .stage:is(.m2,.m3) .card .tick{position:absolute;right:12px;bottom:12px;margin:0;width:52px;height:52px;font-size:26px;--tb:4px;border-width:4px}
+  .stage.m3 .card .tick{width:44px;height:44px;font-size:22px;--tb:3px;border-width:3px;right:10px;bottom:10px}
   .stage:is(.m2,.m3) .editbtn{top:8px;right:auto;left:calc(34px + 42% - 46px)}
   body.focus .stage.m2 .slot{height:40svh;width:100%}
   body.focus .stage.m3 .slot{height:27svh;width:100%}
@@ -615,7 +620,7 @@ dialog{max-height:calc(100dvh - 24px)}
   #stage .slot{aspect-ratio:auto;max-height:none;max-width:none;height:calc(100svh - 150px);min-height:180px}
   #stage .card .tag{padding:4px 6px;font-size:13px}
   #stage .card .pic{padding:6px 8px 0}
-  #stage .card .tick{position:absolute;right:8px;bottom:8px;margin:0;width:44px;height:44px;font-size:22px;border-width:3px}
+  #stage .card .tick{position:absolute;right:8px;bottom:8px;margin:0;width:44px;height:44px;font-size:22px;--tb:3px;border-width:3px}
   #stage .card .word{padding:2px 56px 10px !important;font-size:clamp(16px,7cqw,26px)}
   #stage .slot .editbtn{top:36px;right:6px;width:36px;height:36px;font-size:15px}
   .stage-actions{min-height:58px;padding-top:4px}
@@ -661,12 +666,31 @@ dialog{max-height:calc(100dvh - 24px)}
 
   <!-- ================= THE TOOL ================= -->
   <main class="tool" id="tool" aria-label="First Then board">
-    <button class="boardchip" id="boardChip" hidden></button>
-    <div id="stage" class="stage m2" aria-live="polite"></div>
+    <button class="boardchip pending" id="boardChip"></button>
+    <!-- placeholder board: same classes and sizes as the first render, so nothing below jumps (CLS); renderStage replaces it -->
+    <div id="stage" class="stage m2" aria-live="polite"><div class="slot"><div class="card first is-active"><span class="tag">First</span><span class="pic"></span><span class="word"></span><span class="tick" aria-hidden="true">✓</span></div></div><div class="arrow" aria-hidden="true">→</div><div class="slot"><div class="card then is-waiting"><span class="tag">Then</span><span class="pic"></span><span class="word"></span><span class="tick" aria-hidden="true">✓</span></div></div></div>
     <div class="stage-actions" id="stageActions"></div>
     <div class="pairnav" id="pairNav"></div>
     <button class="btn exitbtn" id="exitBtn" aria-label="Exit full screen (hold)">✕<span class="fill"></span></button>
   </main>
+  <script>
+  /* Before first paint: size the placeholder like the last visit (layout hint saved by renderStage). */
+  (function () {
+    try {
+      var h = null;
+      try { h = JSON.parse(localStorage.getItem("ft-layout")); } catch (e) {}
+      var m3 = location.hash === "#mode=3" || (h && h.m === 3);
+      if (h && !h.c) document.getElementById("boardChip").hidden = true;
+      var st = document.getElementById("stage");
+      if (m3) st.className = "stage m3";
+      if (h && h.d) {
+        st.innerHTML = '<div class="alldone"><div class="big">🎉</div><h2>All done!</h2><span class="btn nextbtn">↺ Again</span></div>';
+      } else if (m3) {
+        st.insertAdjacentHTML("beforeend", '<div class="arrow" aria-hidden="true">→</div><div class="slot"><div class="card next is-waiting"><span class="tag">Next</span><span class="pic"></span><span class="word"></span><span class="tick" aria-hidden="true">✓</span></div></div>');
+      }
+    } catch (e) {}
+  })();
+  </script>
 
   <div class="fakedoor">
     <button class="btn" id="fakeDoorBtn">📱 Want this as an iPhone/iPad app?</button>
@@ -796,7 +820,7 @@ dialog{max-height:calc(100dvh - 24px)}
     <p>First Then Board · first-then.app · No cookies · No ads · Your data stays on your device.</p>
     <p>Made by Natalia Jakubczyk-Gajewska · Apps for Parents · <a href="mailto:appsforparents@gmail.com">appsforparents@gmail.com</a> · <a href="privacy.html">Privacy</a></p>
     <p>Icons are your device's emoji.</p>
-    <p>v1.5.1</p>
+    <p>v1.5.2</p>
   </footer>
 </div>
 
@@ -1290,11 +1314,20 @@ function renderAll() { renderBoardChip(); renderStage(); renderPairNav(); render
 function renderBoardChip() {
   const c = $("#boardChip");
   c.hidden = S.boards.length < 2;
+  c.classList.remove("pending");
   c.textContent = board().name;
+}
+
+/* Layout hint for the placeholder board on the next page load (read by the inline script after <main>).
+   Only layout numbers, never words; stays on this device. */
+function saveLayoutHint(b) {
+  const h = JSON.stringify({ m: b.mode, c: S.boards.length > 1 ? 1 : 0, d: b.current >= b.pairs.length ? 1 : 0 });
+  try { if (localStorage.getItem("ft-layout") !== h) localStorage.setItem("ft-layout", h); } catch (e) {}
 }
 
 function renderStage() {
   const b = board();
+  saveLayoutHint(b);
   const stage = $("#stage"), actions = $("#stageActions");
   stage.className = "stage m" + b.mode;
   stage.innerHTML = ""; actions.innerHTML = "";

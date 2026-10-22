@@ -4,7 +4,7 @@
    - Only same-origin GET requests are handled. Everything else (for example the
      TelemetryDeck POSTs to another origin) is not touched and goes straight to the network.
    - Nothing personal is cached: boards and photos live in IndexedDB, not here. */
-const VERSION = "1.5.1";
+const VERSION = "1.5.2";
 const CACHE = "ft-v" + VERSION;
 const PAGE = "./";
 const PRECACHE = [

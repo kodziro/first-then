@@ -6,7 +6,9 @@
    - "printable-download" {file, paper}: a PDF download button on /printable/ is tapped.
    - "guide-to-board" {position, target}: a button that opens the board is tapped
      (position = the folder name of the guide page, target = board | board-3).
-   Cookieless: clientUser is a random value per page load, never stored. Nothing is saved in the browser.
+   Every signal also carries os (device group), v (site version) and unlocked (yes|no: extras unlocked today,
+   read from the board's localStorage date "ft-tried"). Known bots send nothing.
+   Cookieless: clientUser is a random value per page load, never stored. This file saves nothing in the browser.
    If the SDK does not load (offline, blocked), nothing is sent and the page works the same.
    DO NOT UPDATE telemetrydeck-sdk.js without re-checking: the _post override below copies
    2.0.4 internals (instance.target, _post). */
@@ -15,8 +17,27 @@
 const TD_APP_ID = "B4DED0BE-CBC2-4D31-934C-26CB40726237";
 const TD_SDK_URL = "/telemetrydeck-sdk.js";
 const TD_TEST_MODE = /^localhost$|^127(\.\d+){0,2}\.\d+$|^\[::1?]$/.test(location.hostname) || location.protocol === "file:";
+// Common fields on every signal (fixed values only): device group, site version, extras unlocked today.
+const TD_UA = navigator.userAgent || "";
+const TD_OS = (/iPad|iPhone|iPod/.test(TD_UA) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) ? "ios"
+  : /Android/.test(TD_UA) ? "android" : /Mac/.test(TD_UA) ? "mac" : /Windows/.test(TD_UA) ? "windows" : "other";
+const TD_VERSION = ((document.querySelector('meta[name="version"]') || {}).content || "").replace(/[^0-9.]/g, "").slice(0, 12);
+// Known bots and automated browsers load the page too: they send no signal (same check as keepquiet.app).
+const TD_BOT = (() => {
+  try { if (navigator.webdriver === true) return true; } catch (e) {}
+  return /bot\b|crawl|spider|headless|lighthouse|inspectiontool|webindexer|PTST\//i.test(TD_UA) && !/cubot/i.test(TD_UA);
+})();
 let td = null;
-let tdWaiting = [];                // signals fired before the SDK is ready (max 20)
+let tdWaiting = TD_BOT ? null : [];   // signals fired before the SDK is ready (max 20); null = send nothing
+// Extras unlocked for today on the board page? (If LOCKS_ON in index.html is set to false, return false here too.) Read only: the date the board keeps in localStorage "ft-tried".
+function freeDayActive() {
+  try {
+    const u = (JSON.parse(localStorage.getItem("ft-tried") || "null") || {}).until;
+    const d = new Date();
+    const today = d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+    return typeof u === "string" && /^\d{4}-\d{2}-\d{2}$/.test(u) && today <= u;
+  } catch (e) { return false; }
+}
 
 function tdRandomId() {
   try { if (crypto && crypto.randomUUID) return crypto.randomUUID(); } catch (e) {}
@@ -46,11 +67,14 @@ function tdSend(signal, safe) {
       source: tdSource(),
       path: location.pathname,
       referrer: tdReferrerHost() || "none",
+      os: TD_OS,
+      v: TD_VERSION,
+      unlocked: freeDayActive() ? "yes" : "no",
     })).catch(() => {});
   } catch (e) {}
 }
 try {
-  import(TD_SDK_URL).then(mod => {
+  if (!TD_BOT) import(TD_SDK_URL).then(mod => {
     const instance = new mod.default({ appID: TD_APP_ID, clientUser: tdRandomId(), testMode: TD_TEST_MODE });
     // Same request as the SDK's own _post (pinned 2.0.4), plus keepalive so
     // the browser finishes the POST even while it follows an outbound link.
@@ -81,6 +105,12 @@ const ANALYTICS_KEYS = {           // only these keys, only these values (same l
   action:     /^(shown|closed|new|open)$/,
   file:       /^(blank-2|blank-3|labels)$/,
   paper:      /^(a4|letter)$/,
+  // v1.6.0 "free for today" funnel (same signal names as token-board.app)
+  item:       /^(photo|icon|mode3|board|template|print|card)$/,   // which locked extra
+  from:       /^(editor|menu|boards|print|card)$/,                // where the tap happened
+  via:        /^(scroll|menu)$/,                                   // how the pricing section was reached
+  how:        /^(button|close)$/,                                  // how the offer dialog was left
+  nth:        /^(1|2|3\+)$/,                                       // which free day in this browser
 };
 function track(signal, params = {}) {
   const safe = {};

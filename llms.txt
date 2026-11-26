@@ -5,7 +5,7 @@
 Made by: Natalia Jakubczyk-Gajewska (Apps for Parents). Contact: appsforparents@gmail.com
 Website: https://first-then.app/
 Type: web app (not an App Store app). Language: English.
-Price: free. No account, no ads.
+Price: the simple board is free. Extras are locked and can be unlocked free for one day at a time; nothing is sold on the site yet (planned price for a one-time unlock: $9.99). No account, no ads.
 
 ## What it is
 
@@ -17,15 +17,16 @@ Price: free. No account, no ads.
 ## Key features
 
 - Cards: each card has a picture and a word. The picture can be an icon or your own photo. A card can also be text only.
-- Icons: about 80 icons in 5 groups (Routines, School, Food, Play, Rewards), with search. The icons are the device's own emoji.
-- Own photos: take a photo with the camera or choose one from the device, then crop it to a square. Photos are made smaller on the device and saved in "My photos" to use again on any card.
+- Icons: 80 icons in 5 groups (Routines, School, Food, Play, Rewards), with search. 20 icons are free; the others are an extra. The icons are the device's own emoji.
+- Extras and "free for today": some features are locked extras (adding your own photos, the icons outside the free 20, the third card, more boards and ready-made boards, printing a board with its pictures). One tap on "Unlock free for today" opens all extras until midnight, at no cost, with no payment, email or account. It can be repeated on any day. Boards and photos already made always stay usable.
+- Own photos (extra): take a photo with the camera or choose one from the device, then crop it to a square. Photos are made smaller on the device and saved in "My photos" to use again on any card.
 - Done: tap the First card when the task is done. It gets a check mark and a short confetti celebration, and the Then card lights up.
-- First-Then-Next: an optional third card for children who are ready to see one more step.
+- First-Then-Next (extra): an optional third card for children who are ready to see one more step.
 - Pairs: prepare several First-Then pairs in a row. The child sees one pair at a time, and "Next" moves to the following pair.
-- Several boards: the app starts with five boards: My board, Morning, Bedtime, School and Meals. The last four come with ready First-Then pairs. Tap the board name above the cards to switch boards. In the Boards dialog a new board can start empty or from one of the same four templates: Morning, Bedtime, School or Meals.
+- Several boards (extra): the app starts with one board, "My board". In the Boards dialog a new board can start empty or from one of four ready-made boards with First-Then pairs: Morning, Bedtime, School or Meals. With two or more boards, tap the board name above the cards to switch.
 - Full screen (child mode): shows only the board, with no editing. Exit by holding the close button for about one second. The screen stays on in full screen where the browser supports it. On iPad the full screen button works in Safari. On iPhone, full screen works only when the board is opened from the Home Screen icon.
 - Big text: larger words on the cards.
-- Print: a free printable First-Then board. Print one pair or all pairs; each pair prints on its own page, in landscape, with icons and photos included. "Blank template" prints empty First and Then cards (and a Next card in 3-card mode) with space for a picture and a line for the word, to fill in by hand.
+- Print: "Blank template" is free and prints empty First and Then cards (and a Next card in 3-card mode) with space for a picture and a line for the word, to fill in by hand. Printing one pair or all pairs with their icons and photos (each pair on its own page, in landscape) is an extra.
 - Printable PDFs: free blank templates to download from https://first-then.app/printable/ (blank First-Then board, blank First-Then-Next board, a cut-out sheet of First / Then / Next label cards; A4 and US Letter each; black and white; no sign-up).
 - Backup: export all boards and photos to one file, and import it on another device or browser.
 - Add to Home Screen: the board can be added to the Home Screen of a phone or tablet and opened like an app.
@@ -64,10 +65,10 @@ Price: free. No account, no ads.
 
 ## FAQ
 
-- Is it free? Yes. The board is free in the browser, with no account and no ads.
+- Is it free? Yes. The simple board is free in the browser, with no account and no ads. Extras (own photos, more icons, a third card, more boards, printing with pictures) are locked, and one tap unlocks all of them free for today. Nothing is charged on the site.
 - Where are my photos stored? Only on your device, inside the browser's storage. They are never uploaded to a server.
 - Can my boards get lost? Yes, because they live only in that browser. Clearing the browser data deletes them, and Safari may delete site data after some days without a visit. To protect them, add the board to the Home Screen and export a backup from time to time.
-- Can I print it? Yes. Open the menu, choose Print, then "this pair" or "all pairs". "Blank template" prints empty cards to fill in by hand.
+- Can I print it? Yes. Open the menu and choose Print. "Blank template" prints empty cards to fill in by hand and is free. "This pair" and "All pairs" print the board with its pictures and are extras.
 - Does it work offline? Yes, after the first visit. The board is saved in the browser, so it opens without internet.
 - Is there an iPhone or iPad app? Not yet. First Then Board is a web app that works in the browser on iPhone and iPad.
 

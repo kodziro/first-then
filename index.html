@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>First Then Board – Free, Printable, With Your Own Photos</title>
-<meta name="description" content="Free First-Then board for autism, ADHD and toddlers. Use icons or your own photos, save boards and print them. No account – photos stay on your device.">
+<title>First Then Board – Free Online and Printable</title>
+<meta name="description" content="Free First-Then board for autism, ADHD and toddlers. Picture cards, tap when done, blank boards to print. No account – your data stays on your device.">
 <!-- DOMAIN: first-then.app (used in: canonical, og:url, JSON-LD, footer, SITE.domain in script) -->
 <link rel="canonical" href="https://first-then.app/">
 <meta property="og:type" content="website">
-<meta property="og:title" content="First Then Board – free, with your own photos">
-<meta property="og:description" content="A calm, simple First-Then board for kids. Icons or your own photos. Everything stays on your device.">
+<meta property="og:title" content="First Then Board – free, simple, printable">
+<meta property="og:description" content="A calm, simple First-Then board for kids, with picture cards and blank boards to print. Everything stays on your device.">
 <meta property="og:url" content="https://first-then.app/">
 <meta property="og:site_name" content="First Then Board">
 <meta property="og:image" content="https://first-then.app/og-image.png">
@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="First Then Board: a First card “Shoes on” and a Then card “Park”. Free, own photos, printable.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="version" content="1.5.2">
+<meta name="version" content="1.6.0">
 <meta name="theme-color" content="#F6F3EC">
 <meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -72,7 +72,7 @@
       "@id": "https://first-then.app/#app",
       "name": "First Then Board",
       "url": "https://first-then.app/",
-      "description": "Free online First-Then board with icons or your own photos. Printable. Data stays on the device.",
+      "description": "Free online First-Then board with picture icons. Extras such as your own photos can be unlocked free for today. Printable. Data stays on the device.",
       "applicationCategory": "EducationalApplication",
       "operatingSystem": "Any (web browser)",
       "browserRequirements": "Requires JavaScript and a modern web browser.",
@@ -82,14 +82,12 @@
       "screenshot": "https://first-then.app/og-image.png",
       "featureList": [
         "First-Then board with two picture cards",
-        "Optional third card (First-Then-Next)",
-        "Cards with icons, your own photos, or text only",
+        "Cards with icons or text only",
+        "Extras, free to unlock for today: your own photos, more icons, a third card (First-Then-Next), more boards, printing with pictures",
         "Tap the First card when the task is done",
         "Several First-Then pairs in a row",
-        "Several saved boards",
         "Full screen child mode",
         "Big text",
-        "Print one pair or all pairs, photos included",
         "Blank printable First-Then template",
         "Backup export and import",
         "Works offline after the first visit",
@@ -117,7 +115,7 @@
           "name": "Is it free?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The board is free in your browser. No account, no ads."
+            "text": "Yes. The simple board is free in your browser, with no account and no ads. Some extras are locked: your own photos, more icons, a third card, more boards and printing with pictures. One tap unlocks all of them for today, at no cost. Nothing is charged on this site."
           }
         },
         {
@@ -141,7 +139,7 @@
           "name": "Can I print it?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Open the ⋯ menu → Print, and choose “this pair” or “all pairs”. You get a clean paper board with your icons and photos. “Blank template” prints empty cards that you fill in by hand."
+            "text": "Yes. Open the ⋯ menu → Print. “Blank template” prints empty cards that you fill in by hand, and it is free. “This pair” and “All pairs” print your board with its icons and photos. They are extras that you can unlock free for today."
           }
         },
         {
@@ -149,7 +147,7 @@
           "name": "What is First-Then-Next?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "It adds a third card (⋯ menu → 3 cards). Use it when the child is ready to see one more step, for example “First bath, then story, next bed”."
+            "text": "It adds a third card (⋯ menu → 3 cards). Use it when the child is ready to see one more step, for example “First bath, then story, next bed”. The third card is an extra that you can unlock free for today."
           }
         },
         {
@@ -157,7 +155,7 @@
           "name": "Can I have more than one board?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. The board starts with five boards: My board, Morning, Bedtime, School and Meals. Tap the board name above the cards to switch, or add your own. Each board keeps its own pairs. You can also start a new board from a template: Morning, Bedtime, School or Meals."
+            "text": "Yes. You start with one board. More boards and four ready-made boards (Morning, Bedtime, School and Meals) are extras. Open the ⋯ menu → Boards and unlock them free for today. Each board keeps its own pairs."
           }
         },
         {
@@ -553,6 +551,55 @@ dialog{max-height:calc(100dvh - 24px)}
 .tile .tw{overflow:hidden;text-overflow:ellipsis;max-width:100%;white-space:nowrap}
 .mlist{display:flex;flex-direction:column}
 .tplhead{margin:18px 0 8px;font-size:15px;font-weight:700;color:var(--ink-2)}
+/* ---------- v1.6.0: pricing section + locks ("free for today") ---------- */
+.pricing{max-width:920px;margin:26px auto 8px;text-align:center}
+.pricing .eyebrow{margin:0 0 6px;font-size:13px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--first-ink)}
+.pricing h2{font-size:clamp(24px,4vw,34px);line-height:1.15;margin:0 0 8px;letter-spacing:-.01em}
+.pricing .psub{margin:0 auto 20px;max-width:560px;color:var(--ink-2)}
+.plans{display:grid;grid-template-columns:1fr;gap:16px;text-align:left}
+.plan{background:var(--surface);border:1.5px solid var(--line);border-radius:22px;padding:22px 20px;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.plan.pro{border:2px solid var(--first);background:#F8FAFF}
+.plan h3{margin:0;font-size:15px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:var(--ink-2)}
+.plan .price{margin:4px 0 12px;display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.plan .price b{font-size:40px;line-height:1.1;letter-spacing:-.02em}
+.plan .price span{font-size:14px;font-weight:600;color:var(--ink-2)}
+.plan .pnote{margin:0 0 6px;font-weight:700}
+.plan ul{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:8px}
+.plan li{position:relative;padding-left:30px;line-height:1.35}
+.plan li::before{content:"✓";position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;background:var(--then-soft);color:var(--then);font-size:13px;font-weight:800;display:grid;place-items:center}
+.plan .pbtn{margin-top:auto;width:100%;min-height:60px;border:0;border-radius:16px;background:var(--first);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;padding:10px 14px;box-shadow:0 8px 20px rgba(54,112,229,.28);cursor:pointer;font-family:inherit}
+.plan .pbtn b{font-size:18px}
+.plan .pbtn small{font-size:13px;font-weight:600;opacity:.92}
+.plan .popen{margin:auto 0 0;min-height:60px;border-radius:16px;background:var(--then-soft);color:var(--then);font-weight:800;display:flex;align-items:center;justify-content:center;text-align:center;padding:10px 14px}
+.plan .ptrust{margin:12px 0 0;font-size:13.5px;color:var(--ink-2);text-align:center}
+.plan .plink{margin-top:auto;display:flex;align-items:center;justify-content:center;min-height:48px;border:1.5px solid var(--line);border-radius:14px;font-weight:700;color:var(--ink);text-decoration:none;background:var(--surface-2)}
+.pricing .pfine{margin:14px auto 0;max-width:620px;font-size:13.5px;color:var(--ink-2)}
+@media (min-width:760px){
+  .plans{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:20px}
+  .plan.free{order:-1}
+  .plan{padding:26px 26px}
+}
+/* locked / open states */
+.when-open{display:none !important}
+body.ft-open .when-open{display:flex !important}
+body.ft-open p.psub.when-open{display:block !important}
+#mMode[aria-checked="true"] .lki{display:none}   /* a board that already has 3 cards: no lock on the switch */
+body.ft-open .when-locked{display:none !important}
+.tile.lk::after{content:"🔒";position:absolute;top:3px;right:4px;font-size:13px;line-height:1;opacity:.8}
+.tile.lk .te{opacity:.72}
+body.ft-open .tile.lk::after{display:none}
+body.ft-open .tile.lk .te{opacity:1}
+.lki{font-size:14px;margin-left:6px;opacity:.8}
+.mrow .lki{margin-left:0}
+body.ft-open .lki{display:none}
+#tryDlg{max-width:min(460px,calc(100vw - 20px));text-align:center}
+#tryDlg .tryrow{font-size:34px;letter-spacing:6px;margin:4px 0 6px}
+#tryDlg h2{margin:0 0 8px;font-size:23px;line-height:1.2}
+#tryDlg p{margin:0 0 10px}
+#tryDlg .tryprice{font-size:14.5px;color:var(--ink-2)}
+#tryDlg .trybtns{display:grid;gap:10px;margin-top:16px}
+#tryDlg .trybtns .btn{width:100%;min-height:52px;font-size:17px}
+#tryDlg #tryYes{background:var(--first);border-color:var(--first);color:#fff}
 .tpls{display:flex;flex-direction:column;gap:8px}
 .tpls .btn{width:100%;border-color:var(--first)}
 .mrow{display:flex;align-items:center;gap:14px;width:100%;min-height:62px;padding:10px 4px;border:0;border-bottom:1px solid var(--line);background:transparent;text-align:left;font-size:17px;font-weight:700;position:relative}
@@ -680,7 +727,8 @@ dialog{max-height:calc(100dvh - 24px)}
       var h = null;
       try { h = JSON.parse(localStorage.getItem("ft-layout")); } catch (e) {}
       var m3 = location.hash === "#mode=3" || (h && h.m === 3);
-      if (h && !h.c) document.getElementById("boardChip").hidden = true;
+      // no hint = first visit = one board since v1.6.0, so no board chip (keeps the first paint without a jump)
+      if (!h || !h.c) document.getElementById("boardChip").hidden = true;
       var st = document.getElementById("stage");
       if (m3) st.className = "stage m3";
       if (h && h.d) {
@@ -691,6 +739,43 @@ dialog{max-height:calc(100dvh - 24px)}
     } catch (e) {}
   })();
   </script>
+
+  <section id="pricing" class="pricing" aria-labelledby="pricingTitle">
+    <p class="eyebrow">Pricing</p>
+    <h2 id="pricingTitle">The board is free. The extras are free today.</h2>
+    <p class="psub when-locked">The simple First-Then board stays free. The extras are locked, and one tap unlocks all of them for today.</p>
+    <p class="psub when-open">All extras are open until midnight. Tomorrow, one tap opens them again.</p>
+    <div class="plans">
+      <div class="plan pro" id="pro-card">
+        <h3>All extras</h3>
+        <p class="price"><b>$9.99</b><span>planned price · one-time</span></p>
+        <p class="pnote">Everything in Free, plus:</p>
+        <ul>
+          <li>Your own photos on the cards</li>
+          <li>All 80 picture icons</li>
+          <li>First-Then-Next: a third card</li>
+          <li>More boards, and 4 ready-made boards</li>
+          <li>Print your boards with their pictures</li>
+        </ul>
+        <button class="pbtn when-locked" id="tryCardBtn"><b>Try all extras free for today</b><small>No payment · No email · No account</small></button>
+        <p class="popen when-open">✓ All extras are unlocked until midnight</p>
+        <p class="ptrust">Not for sale yet. It is free while we test, and your taps help us decide what to offer.</p>
+      </div>
+      <div class="plan free">
+        <h3>Free</h3>
+        <p class="price"><b>$0</b><span>no account, no ads</span></p>
+        <ul>
+          <li>One First-Then board with as many pairs as you like</li>
+          <li>20 picture icons, or your own words</li>
+          <li>Tap when done, and full screen for your child</li>
+          <li>Blank boards to print, plus free PDFs</li>
+          <li>Works offline, and your data stays on your device</li>
+        </ul>
+        <a class="plink" href="#tool">Use the free board ↑</a>
+      </div>
+    </div>
+    <p class="pfine">Nothing is charged on this site. $9.99 is the price we plan for a one-time unlock, with no subscription. <a href="privacy.html">Privacy</a></p>
+  </section>
 
   <div class="fakedoor">
     <button class="btn" id="fakeDoorBtn">📱 Want this as an iPhone/iPad app?</button>
@@ -749,8 +834,8 @@ dialog{max-height:calc(100dvh - 24px)}
 
     <section id="printable">
       <h2>Free printable First-Then board</h2>
-      <p>You can print this board for free. Open the ⋯ menu → <b>Print</b> and choose “This pair” or “All pairs”. Each pair prints on its own page, in landscape, with your icons and photos included.</p>
-      <p>Want an empty one? Choose “Blank template”. It prints empty First and Then cards (and a Next card in 3-card mode), each with space for a picture and a line for the word. Draw, glue a photo or write on it by hand.</p>
+      <p>You can print a blank board for free. Open the ⋯ menu → <b>Print</b> and choose “Blank template”. It prints empty First and Then cards (and a Next card in 3-card mode), each with space for a picture and a line for the word. Draw, glue a photo or write on it by hand.</p>
+      <p>“This pair” and “All pairs” print your own board. Each pair prints on its own page, in landscape, with your icons and photos included. They are extras that you can unlock free for today.</p>
       <p>A paper first then chart is handy on the fridge, in a school bag, or anywhere a screen is not a good idea.</p>
     </section>
 
@@ -777,18 +862,18 @@ dialog{max-height:calc(100dvh - 24px)}
 
     <section id="photos">
       <h2>Using your own photos</h2>
-      <p>Many children understand a photo of the <i>real</i> thing better than an icon. Tap ✏️ → <b>📷 Photo</b>, take a picture or choose one, and crop it to a square. The photo is made smaller on your device and saved in <b>My photos</b>, ready to use on any card.</p>
+      <p>Many children understand a photo of the <i>real</i> thing better than an icon. Tap ✏️ → <b>📷 Photo</b>, take a picture or choose one, and crop it to a square. The photo is made smaller on your device and saved in <b>My photos</b>, ready to use on any card. Photos are an extra: one tap unlocks all extras free for today.</p>
       <p><b>Your photos never leave your device.</b> Nothing is uploaded — not to us and not to anyone else.</p>
     </section>
 
     <section id="faq" class="faq">
       <h2>FAQ</h2>
-      <details><summary>Is it free?</summary><div><p>Yes. The board is free in your browser. No account, no ads.</p></div></details>
+      <details><summary>Is it free?</summary><div><p>Yes. The simple board is free in your browser, with no account and no ads. Some extras are locked: your own photos, more icons, a third card, more boards and printing with pictures. One tap unlocks all of them for today, at no cost. Nothing is charged on this site.</p></div></details>
       <details><summary>Where are my photos stored?</summary><div><p>Only on this device, inside your browser's storage (IndexedDB). They are never uploaded to a server and never sent to analytics. If you use another phone or browser, open the ⋯ menu → <b>Backup</b> → Export, and Import it there.</p></div></details>
       <details><summary>Can my boards get lost?</summary><div><p>They can, because they live only in this browser. Clearing browser data deletes them, and Safari may delete site data after some days without a visit. To stay safe: add the board to your Home Screen, and export a backup now and then.</p></div></details>
-      <details><summary>Can I print it?</summary><div><p>Yes. Open the ⋯ menu → <b>Print</b>, and choose “this pair” or “all pairs”. You get a clean paper board with your icons and photos. “Blank template” prints empty cards that you fill in by hand.</p></div></details>
-      <details><summary>What is First-Then-Next?</summary><div><p>It adds a third card (⋯ menu → 3 cards). Use it when the child is ready to see one more step, for example “First bath, then story, next bed”.</p></div></details>
-      <details><summary>Can I have more than one board?</summary><div><p>Yes. The board starts with five boards: My board, Morning, Bedtime, School and Meals. Tap the board name above the cards to switch, or add your own. Each board keeps its own pairs. You can also start a new board from a template: Morning, Bedtime, School or Meals.</p></div></details>
+      <details><summary>Can I print it?</summary><div><p>Yes. Open the ⋯ menu → <b>Print</b>. “Blank template” prints empty cards that you fill in by hand, and it is free. “This pair” and “All pairs” print your board with its icons and photos. They are extras that you can unlock free for today.</p></div></details>
+      <details><summary>What is First-Then-Next?</summary><div><p>It adds a third card (⋯ menu → 3 cards). Use it when the child is ready to see one more step, for example “First bath, then story, next bed”. The third card is an extra that you can unlock free for today.</p></div></details>
+      <details><summary>Can I have more than one board?</summary><div><p>Yes. You start with one board. More boards and four ready-made boards (Morning, Bedtime, School and Meals) are extras. Open the ⋯ menu → Boards and unlock them free for today. Each board keeps its own pairs.</p></div></details>
       <details><summary>Does it work on iPad and iPhone?</summary><div><p>Yes, in Safari. On iPad, ⛶ gives real full screen. On iPhone, Safari keeps its bars; for full screen, add the board to the Home Screen and open it from there.</p></div></details>
       <details><summary>Does it work offline?</summary><div><p>Yes, after the first visit. The board is saved in your browser, so it opens without internet. Your boards and photos are already on your device.</p></div></details>
       <details><summary>Is there an app?</summary><div><p>Not yet. Tap “Want this as an iPhone/iPad app?” to tell us you want one. For full daily schedules try <a href="https://visual-schedule.app" data-out="visual-schedule" data-pos="faq">Visual Schedule</a>, and for rewards try <a href="https://token-board.app" data-out="token-board" data-pos="faq">Token Board</a>.</p></div></details>
@@ -820,7 +905,7 @@ dialog{max-height:calc(100dvh - 24px)}
     <p>First Then Board · first-then.app · No cookies · No ads · Your data stays on your device.</p>
     <p>Made by Natalia Jakubczyk-Gajewska · Apps for Parents · <a href="mailto:appsforparents@gmail.com">appsforparents@gmail.com</a> · <a href="privacy.html">Privacy</a></p>
     <p>Icons are your device's emoji.</p>
-    <p>v1.5.2</p>
+    <p>v1.6.0</p>
   </footer>
 </div>
 
@@ -843,12 +928,13 @@ dialog{max-height:calc(100dvh - 24px)}
   <div class="dlg-head"><h2>Menu</h2><button class="btn iconbtn" data-close aria-label="Close">✕</button></div>
   <div class="dlg-body">
     <div class="mlist">
-      <button class="mrow" id="mMode" role="switch" aria-checked="false"><span class="e">3️⃣</span><span>3 cards<small>First · Then · Next</small></span><span class="sw"></span></button>
+      <button class="mrow" id="mMode" role="switch" aria-checked="false"><span class="e">3️⃣</span><span>3 cards<small>First · Then · Next</small></span><span class="lki" aria-hidden="true">🔒</span><span class="sw"></span></button>
       <button class="mrow" id="mBig" role="switch" aria-checked="false"><span class="e">🔠</span><span>Big text</span><span class="sw"></span></button>
       <button class="mrow" id="mBoards"><span class="e">🗂️</span><span>Boards<small id="mBoardsSub"></small></span><span class="chev">›</span></button>
       <button class="mrow" id="mPairs"><span class="e">🃏</span><span>All pairs<small id="mPairsSub"></small></span><span class="chev">›</span></button>
       <button class="mrow" id="mPrint"><span class="e">🖨️</span><span>Print</span><span class="chev">›</span></button>
       <button class="mrow" id="mBackup"><span class="e">💾</span><span>Backup<small>Your boards live only on this device</small></span><span class="dot" id="mBackupDot" hidden></span><span class="chev">›</span></button>
+      <button class="mrow" id="mPricing"><span class="e">🏷️</span><span>Pricing<small>The board is free</small></span><span class="chev">›</span></button>
     </div>
   </div>
 </dialog>
@@ -857,8 +943,8 @@ dialog{max-height:calc(100dvh - 24px)}
   <div class="dlg-head"><h2>Boards</h2><button class="btn iconbtn" data-close aria-label="Close">✕</button></div>
   <div class="dlg-body">
     <div class="mlist" id="boardList"></div>
-    <button class="btn big" id="newBoardBtn" style="margin-top:12px;width:100%">＋ New board</button>
-    <h3 class="tplhead">Start from a template</h3>
+    <button class="btn big" id="newBoardBtn" style="margin-top:12px;width:100%">＋ New board<span class="lki" aria-hidden="true">🔒</span></button>
+    <h3 class="tplhead">Ready-made boards</h3>
     <div class="tpls" id="tplList"></div>
   </div>
 </dialog>
@@ -906,8 +992,8 @@ dialog{max-height:calc(100dvh - 24px)}
   <div class="dlg-body">
     <p style="margin-top:0">One pair per page, landscape. Photos are included.</p>
     <div class="bigchoices">
-      <button class="btn" id="printOne"><span class="e">🃏</span>This pair</button>
-      <button class="btn" id="printAll"><span class="e">🗂️</span>All pairs (<span id="printAllN"></span>)</button>
+      <button class="btn" id="printOne"><span class="e">🃏</span><span>This pair<span class="lki" aria-hidden="true">🔒</span></span></button>
+      <button class="btn" id="printAll"><span class="e">🗂️</span><span>All pairs (<span id="printAllN"></span>)<span class="lki" aria-hidden="true">🔒</span></span></button>
       <button class="btn" id="printBlank" style="grid-column:1/-1"><span class="e">🗒️</span>Blank template</button>
     </div>
   </div>
@@ -943,6 +1029,19 @@ dialog{max-height:calc(100dvh - 24px)}
     <p>Our apps you can use today: <a href="https://visual-schedule.app" data-out="visual-schedule" data-pos="fakedoor">Visual Schedule</a> · <a href="https://token-board.app" data-out="token-board" data-pos="fakedoor">Token Board</a></p>
   </div>
   <div class="dlg-foot"><button class="btn primary" data-close>OK</button></div>
+</dialog>
+
+<dialog id="tryDlg" aria-labelledby="tryTitle">
+  <div class="dlg-body">
+    <div class="tryrow" aria-hidden="true">📷🎨3️⃣🗂️🖨️</div>
+    <h2 id="tryTitle">Try all extras free for today</h2>
+    <p>Unlock your own photos, all 80 icons, a third card, more boards and printing with pictures until midnight tonight.</p>
+    <p class="tryprice">Planned price: $9.99, one-time. It is free while we test, and nothing is charged.</p>
+    <div class="trybtns">
+      <button class="btn" id="tryYes">✨ Unlock free for today</button>
+      <button class="btn" id="tryNo">Not now</button>
+    </div>
+  </div>
 </dialog>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -984,8 +1083,18 @@ const SITE = {
 const TD_APP_ID = "B4DED0BE-CBC2-4D31-934C-26CB40726237";
 const TD_SDK_URL = "./telemetrydeck-sdk.js";
 const TD_TEST_MODE = /^localhost$|^127(\.\d+){0,2}\.\d+$|^\[::1?]$/.test(location.hostname) || location.protocol === "file:";
+// Common fields on every signal (fixed values only): device group, site version, extras unlocked today.
+const TD_UA = navigator.userAgent || "";
+const TD_OS = (/iPad|iPhone|iPod/.test(TD_UA) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1)) ? "ios"
+  : /Android/.test(TD_UA) ? "android" : /Mac/.test(TD_UA) ? "mac" : /Windows/.test(TD_UA) ? "windows" : "other";
+const TD_VERSION = ((document.querySelector('meta[name="version"]') || {}).content || "").replace(/[^0-9.]/g, "").slice(0, 12);
+// Known bots and automated browsers load the page too: they send no signal (same check as keepquiet.app).
+const TD_BOT = (() => {
+  try { if (navigator.webdriver === true) return true; } catch (e) {}
+  return /bot\b|crawl|spider|headless|lighthouse|inspectiontool|webindexer|PTST\//i.test(TD_UA) && !/cubot/i.test(TD_UA);
+})();
 let td = null;
-let tdWaiting = [];                // signals fired before the SDK is ready (max 20)
+let tdWaiting = TD_BOT ? null : [];   // signals fired before the SDK is ready (max 20); null = send nothing
 
 function tdRandomId() {
   try { if (crypto && crypto.randomUUID) return crypto.randomUUID(); } catch (e) {}
@@ -1018,11 +1127,14 @@ function tdSend(signal, safe) {
       source: tdSource(),
       path: location.pathname,
       referrer: tdReferrerHost() || "none",
+      os: TD_OS,
+      v: TD_VERSION,
+      unlocked: freeDayActive() ? "yes" : "no",
     })).catch(() => {});
   } catch (e) {}
 }
 try {
-  import(TD_SDK_URL).then(mod => {
+  if (!TD_BOT) import(TD_SDK_URL).then(mod => {
     const instance = new mod.default({ appID: TD_APP_ID, clientUser: tdRandomId(), testMode: TD_TEST_MODE });
     // Same request as the SDK's own _post (pinned 2.0.4), plus keepalive so
     // the browser finishes the POST even while it follows an outbound link.
@@ -1054,6 +1166,12 @@ const ANALYTICS_KEYS = {           // only these keys, only these values
   action:     /^(shown|closed|new|open)$/,
   file:       /^(blank-2|blank-3|labels)$/,
   paper:      /^(a4|letter)$/,
+  // v1.6.0 "free for today" funnel (same signal names as token-board.app)
+  item:       /^(photo|icon|mode3|board|template|print|card)$/,   // which locked extra
+  from:       /^(editor|menu|boards|print|card)$/,                // where the tap happened
+  via:        /^(scroll|menu)$/,                                   // how the pricing section was reached
+  how:        /^(button|close)$/,                                  // how the offer dialog was left
+  nth:        /^(1|2|3\+)$/,                                       // which free day in this browser
 };
 function track(signal, params = {}) {
   const safe = {};
@@ -1068,6 +1186,74 @@ function track(signal, params = {}) {
   else if (tdWaiting && tdWaiting.length < 20) tdWaiting.push([signal, safe]);
   if (location.hostname === "localhost") console.debug("[track]", signal, safe);
 }
+
+/* =====================================================================
+   EXTRAS — "free for today" (v1.6.0, the pay-signal test)
+   Locked extras: adding a new photo, the icons outside FREE_ICONS, the
+   3-card mode, a new board or a template, printing with pictures.
+   One tap unlocks ALL extras until local midnight: free, renewable any day,
+   nothing is charged, no email. What a visitor already made is never
+   locked. Full screen never shows a lock. LOCKS_ON = false opens everything.
+   Storage: localStorage "ft-tried" = {until: "YYYY-MM-DD" (local), nth: free
+   days used, used: extras used in this free day}. Numbers and fixed ids only.
+   ===================================================================== */
+const LOCKS_ON = true;
+const TRIED_KEY = "ft-tried";
+const TRY_ITEMS = ["photo", "icon", "mode3", "board", "template", "print", "card"];
+const FREE_ICONS = new Set(["🪥","👕","👟","🛏️","🏠", "📝","📚","🎒","🏫", "🥣","🍽️","🍎","💧", "⚽","🌳","🧸","📱", "⭐","🎁","🙌"]);
+function dateStr(d) { return d.getFullYear() + "-" + String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0"); }
+let triedMem = null;   // also works when storage is blocked: then it lasts until reload
+function tried() {
+  if (triedMem) return triedMem;
+  let v = null;
+  try { v = JSON.parse(localStorage.getItem(TRIED_KEY) || "null"); } catch (e) { v = null; }
+  triedMem = { until: "", nth: 0, used: [] };
+  if (v && typeof v === "object") {
+    if (typeof v.until === "string" && /^\d{4}-\d{2}-\d{2}$/.test(v.until)) triedMem.until = v.until;
+    if (Number.isInteger(v.nth) && v.nth >= 0) triedMem.nth = v.nth;
+    if (Array.isArray(v.used)) triedMem.used = v.used.filter(x => TRY_ITEMS.includes(x));
+  }
+  return triedMem;
+}
+function saveTried() { try { localStorage.setItem(TRIED_KEY, JSON.stringify(tried())); } catch (e) { /* storage blocked: this page only */ } }
+function freeDayActive() { if (!LOCKS_ON) return false; const u = tried().until; return !!u && dateStr(new Date()) <= u; }
+function extrasOpen() { return !LOCKS_ON || freeDayActive(); }
+function syncUnlock() { document.body.classList.toggle("ft-open", extrasOpen()); }
+// An extra was really used during a free day: once per extra and free day.
+function useExtra(item) {
+  if (!freeDayActive()) return;
+  const t = tried();
+  if (t.used.includes(item)) return;
+  t.used.push(item); saveTried();
+  track("try-use", { item });
+}
+// Run fn if the extras are open; else show the offer and run fn after the unlock.
+function gate(item, from, fn) {
+  syncUnlock();
+  if (extrasOpen()) { useExtra(item); return fn(); }
+  track("pro-click", { item, from });
+  openTry(item, from, fn);
+}
+const TRY = { item: "", from: "", fn: null, done: false, how: "close" };
+function openTry(item, from, fn) {
+  TRY.item = item; TRY.from = from; TRY.fn = fn || null; TRY.done = false; TRY.how = "close";
+  $("#tryDlg").showModal();
+}
+function tryYes() {
+  const t = tried();
+  t.until = dateStr(new Date()); t.nth += 1; t.used = [];
+  saveTried();
+  TRY.done = true;
+  track("try-today", { item: TRY.item, from: TRY.from, nth: t.nth >= 3 ? "3+" : String(t.nth) });
+  $("#tryDlg").close();
+  syncUnlock();
+  toast("All extras are unlocked until midnight ✨");
+  const fn = TRY.fn; TRY.fn = null;
+  if (fn) { useExtra(TRY.item); fn(); }
+}
+function onTryClose() { if (!TRY.done) track("try-skip", { item: TRY.item, how: TRY.how }); TRY.fn = null; }
+let proViewSent = false;
+function proView(via) { if (proViewSent) return; proViewSent = true; track("pro-view", { via }); }
 
 /* =====================================================================
    ICON LIBRARY  (emoji · word · search keywords)
@@ -1192,11 +1378,10 @@ const pair = (b = board()) => b.pairs[b.current];
 const cardsSig = b => JSON.stringify([b.name, b.mode, b.pairs.map(p => p.cards.map(c => [c.type, c.icon, c.photoId, c.label]))]);
 function seedBoards() {
   const now = Date.now();   // created = now + index keeps the order stable
+  // v1.6.0: a new visitor gets one board. More boards and the templates are extras (Boards dialog).
   return [{ id: uid(), name: "My board", seed: true, mode: 2, current: 0, created: now, pairs: [
     newPair(ic("👟","Shoes on"), ic("🌳","Park"), ic("🏠","Home")),
-  ]}, ...BOARD_TEMPLATES.map((t, i) => (
-    { id: uid(), name: t.name, seed: true, mode: 2, current: 0, created: now + i + 1, pairs: t.pairs() }
-  ))];
+  ]}];
 }
 
 // Ready-made boards (Boards dialog). Two cards per pair; the third card stays empty.
@@ -1558,6 +1743,7 @@ function backupDue() {
 }
 function updateMenuDot() { $("#menuDot").hidden = !backupDue(); }
 function openMenu() {
+  syncUnlock();
   const b = board();
   $("#mMode").setAttribute("aria-checked", b.mode === 3);
   $("#mBig").setAttribute("aria-checked", !!S.settings.bigText);
@@ -1598,6 +1784,7 @@ function renderBoardList() {
 const CE = { pairIdx: 0, cardIdx: 0, draft: null, group: "All", start: "" };
 
 function openCardEditor(pairIdx, cardIdx) {
+  syncUnlock();   // a free day may have ended while the page was open
   const b = board();
   CE.pairIdx = pairIdx; CE.cardIdx = cardIdx;
   CE.draft = { ...b.pairs[pairIdx].cards[cardIdx] };
@@ -1609,6 +1796,7 @@ function openCardEditor(pairIdx, cardIdx) {
   renderChips(); renderCEGrid(); renderPreview();
   $("#cardDlg").showModal();
   $("#cardDlg .dlg-body").scrollTop = 0;
+  track("editor-open", { mode: b.mode });
 }
 function ceCommit() {
   const b = board(), p = b.pairs[CE.pairIdx];
@@ -1656,7 +1844,7 @@ function renderCEGrid() {
   const grid = $("#iconGrid"); grid.innerHTML = "";
   const g = CE.group, d = CE.draft;
   if (!q && (g === "All" || g === "My photos")) {
-    grid.appendChild(tile("add", "📷", "Photo", false, () => $("#fileInput").click()));
+    grid.appendChild(tile("add lk", "📷", "Photo", false, () => gate("photo", "editor", () => $("#fileInput").click())));
     const list = [...S.photos.values()].sort((a, b) => b.created - a.created);
     for (const p of list) {
       const t = tile("", "", "", d.type === "photo" && d.photoId === p.id, () => {
@@ -1687,17 +1875,22 @@ function renderCEGrid() {
   if (q) items = items.filter(x => x.k.includes(q) || x.e === q);
   else if (g !== "All") items = items.filter(x => x.g === g);
   if (q && !items.length) {
-    grid.appendChild(tile("add", "📷", "Photo", false, () => $("#fileInput").click()));
+    grid.appendChild(tile("add lk", "📷", "Photo", false, () => gate("photo", "editor", () => $("#fileInput").click())));
     return;
   }
+  // free icons first (not in a search), so a visitor without the unlock does not have to hunt for them
+  if (!q) items = [...items.filter(x => FREE_ICONS.has(x.e)), ...items.filter(x => !FREE_ICONS.has(x.e))];
   for (const it of items) {
-    grid.appendChild(tile("", it.e, it.w, d.type === "icon" && d.icon === it.e, () => {
+    // an icon outside the free set is an extra; the icon already on this card is never locked
+    const extra = !FREE_ICONS.has(it.e) && !(d.type === "icon" && d.icon === it.e);
+    const pick = () => {
       const prevAuto = CE.draft.type === "icon" ? (ALL_ICONS.find(x => x.e === CE.draft.icon) || {}).w : null;
       const word = $("#ceWord").value.trim();
       if (!word || word === prevAuto) $("#ceWord").value = it.w;
       CE.draft = { ...CE.draft, type: "icon", icon: it.e, photoId: "" };
       ceCommit(); $("#cardDlg").close();
-    }));
+    };
+    grid.appendChild(tile(extra ? "lk" : "", it.e, it.w, d.type === "icon" && d.icon === it.e, () => extra ? gate("icon", "editor", pick) : pick()));
   }
 }
 async function deletePhoto(id) {
@@ -1853,7 +2046,12 @@ function newBoardFromTemplate(t) {
 function renderTemplates() {
   for (const t of BOARD_TEMPLATES) {
     const btn = el("button", "btn", `${t.emoji} ${t.name}`);
-    btn.onclick = () => newBoardFromTemplate(t);
+    const lk = el("span", "lki", "🔒"); lk.setAttribute("aria-hidden", "true"); btn.appendChild(lk);
+    btn.onclick = () => {
+      // an untouched starter board of this template (visitors from before v1.6.0) just opens: no lock
+      const same = S.boards.some(x => x.name === t.name && x.seed && x.seedSig === cardsSig(x));
+      if (same) newBoardFromTemplate(t); else gate("template", "boards", () => newBoardFromTemplate(t));
+    };
     $("#tplList").appendChild(btn);
   }
 }
@@ -2123,16 +2321,30 @@ function wire() {
   $("#fsBtn").onclick = enterFocus;
   $("#menuBtn").onclick = openMenu;
   $("#boardChip").onclick = () => { renderBoardList(); $("#boardsDlg").showModal(); };
-  $("#mMode").onclick = () => { setMode(board().mode === 3 ? 2 : 3); $("#mMode").setAttribute("aria-checked", board().mode === 3); };
+  $("#mMode").onclick = () => {
+    const to3 = board().mode !== 3;   // going back to 2 cards is never locked
+    const go = () => { setMode(to3 ? 3 : 2); $("#mMode").setAttribute("aria-checked", board().mode === 3); };
+    if (to3) gate("mode3", "menu", go); else go();
+  };
+  $("#mPricing").onclick = () => { $("#menuDlg").close(); proView("menu"); $("#pricing").scrollIntoView({ behavior: "smooth", block: "start" }); };
+  $("#tryCardBtn").onclick = () => { track("pro-click", { item: "card", from: "card" }); openTry("card", "card", null); };
+  $("#tryYes").onclick = tryYes;
+  $("#tryNo").onclick = () => { TRY.how = "button"; $("#tryDlg").close(); };
+  $("#tryDlg").addEventListener("close", onTryClose);
+  document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") syncUnlock(); });
+  try {
+    const io = new IntersectionObserver(es => { if (es.some(e => e.isIntersecting)) { proView("scroll"); io.disconnect(); } }, { threshold: 0.5 });
+    io.observe($("#pro-card"));   // the paid card, at least half of it on screen
+  } catch (e) {}
   $("#mBig").onclick = () => { S.settings.bigText = !S.settings.bigText; saveSettings(); renderStage(); $("#mBig").setAttribute("aria-checked", !!S.settings.bigText); };
   $("#mBoards").onclick = () => { $("#menuDlg").close(); renderBoardList(); $("#boardsDlg").showModal(); };
   $("#mPairs").onclick = () => { $("#menuDlg").close(); renderQueue(); $("#pairsDlg").showModal(); };
   $("#mPrint").onclick = () => { $("#menuDlg").close(); $("#printAllN").textContent = board().pairs.length; $("#printDlg").showModal(); };
   $("#mBackup").onclick = () => { $("#menuDlg").close(); fillBackupDlg(); $("#backupDlg").showModal(); };
-  $("#printOne").onclick = () => doPrint("one");
-  $("#printAll").onclick = () => doPrint("all");
+  $("#printOne").onclick = () => gate("print", "print", () => doPrint("one"));
+  $("#printAll").onclick = () => gate("print", "print", () => doPrint("all"));
   $("#printBlank").onclick = () => doPrint("blank");
-  $("#newBoardBtn").onclick = newBoard;
+  $("#newBoardBtn").onclick = () => gate("board", "boards", newBoard);
   renderTemplates();
   $("#exportBtn").onclick = exportBackup;
   $("#importBtn").onclick = () => $("#importInput").click();
@@ -2175,6 +2387,7 @@ function wire() {
    START
    ===================================================================== */
 (async function init() {
+  syncUnlock();
   wire();
   renderExamples();
   const ok = await DB.open();

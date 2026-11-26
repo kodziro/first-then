@@ -60,6 +60,9 @@ Price: the simple board is free. Extras are locked and can be unlocked free for 
 - [First-Then-Next board](https://first-then.app/first-then-next/): what the 3-card board is, when a child is ready for the third card, what to put on the Next card, how to move from two cards to three, examples.
 - [First-Then board for autism](https://first-then.app/autism/): why it helps, how to start, real photos or icons, common mistakes, what to do when a child refuses, how to fade the board out, home and school.
 - [First-Then board for toddlers](https://first-then.app/toddlers/): how small the task should be, rewards that work, potty training, tantrums, examples, mistakes to avoid.
+- [First-Then chart, schedule or board](https://first-then.app/first-then-chart/): the different names of the same tool (first-then chart, first/then schedule, "first and then" board), what it looks like, 18 example pairs for the day, paper or screen, how to make one.
+- [First-Then board in the classroom](https://first-then.app/classroom/): a teacher guide to where to put the board, how to introduce it to a student, classroom examples, whole-class use, common mistakes.
+- [First-Then board for speech therapy and ABA](https://first-then.app/speech-therapy/): how to run a session with the board, session examples, words to model, online sessions, what to send home, use with a token board.
 - [First-Then board vs visual schedule vs token board](https://first-then.app/first-then-vs-visual-schedule/): a comparison table (what each tool shows, steps shown, when to use it, typical age), when to use which, how to use them together, when to move on.
 - [Privacy](https://first-then.app/privacy.html): what is saved on the device, which anonymous usage counts are sent, and what is never sent.
 

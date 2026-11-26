@@ -1,5 +1,6 @@
 /* First Then Board — outbound click signal for the guide pages
-   (printable/, first-then-next/, autism/, toddlers/, first-then-vs-visual-schedule/).
+   (printable/, first-then-next/, autism/, toddlers/, first-then-vs-visual-schedule/, and since v1.6.1
+   first-then-chart/, classroom/, speech-therapy/).
    Same TelemetryDeck code and the same ANALYTICS_KEYS allow-list as index.html; keep both in sync.
    Signals (fixed values only):
    - "appstore-click" {target, position}: a link with data-out is tapped.

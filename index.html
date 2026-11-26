@@ -17,7 +17,7 @@
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="First Then Board: a First card “Shoes on” and a Then card “Park”. Free, own photos, printable.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="version" content="1.6.0">
+<meta name="version" content="1.6.1">
 <meta name="theme-color" content="#F6F3EC">
 <meta name="color-scheme" content="light">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -828,7 +828,7 @@ body.ft-open .lki{display:none}
         <div class="ex"><div class="pair"><div class="pc" data-e="🧹" data-w="Clean up"><span class="e" aria-hidden="true">🧹</span><span>First: Clean up</span></div><span class="qarrow" aria-hidden="true">→</span><div class="pc" data-e="📺" data-w="TV"><span class="e" aria-hidden="true">📺</span><span>Then: TV</span></div></div><div class="who">Home</div></div>
         <div class="ex"><div class="pair"><div class="pc" data-e="🗣️" data-w="Talk"><span class="e" aria-hidden="true">🗣️</span><span>First: Talk</span></div><span class="qarrow" aria-hidden="true">→</span><div class="pc" data-e="🧩" data-w="Puzzle"><span class="e" aria-hidden="true">🧩</span><span>Then: Puzzle</span></div></div><div class="who">Speech therapy</div></div>
         <div class="ex"><div class="pair"><div class="pc" data-e="🪑" data-w="Sit down"><span class="e" aria-hidden="true">🪑</span><span>First: Sit down</span></div><span class="qarrow" aria-hidden="true">→</span><div class="pc" data-e="🎵" data-w="Music"><span class="e" aria-hidden="true">🎵</span><span>Then: Music</span></div></div><div class="who">Classroom</div></div>
-        <div class="ex"><div class="pair"><div class="pc" data-e="🥦" data-w="Vegetables"><span class="e" aria-hidden="true">🥦</span><span>First: Vegetables</span></div><span class="qarrow" aria-hidden="true">→</span><div class="pc" data-e="🍦" data-w="Ice cream"><span class="e" aria-hidden="true">🍦</span><span>Then: Ice cream</span></div></div><div class="who">Meals</div></div>
+        <div class="ex"><div class="pair"><div class="pc" data-e="🍽️" data-w="Set the table"><span class="e" aria-hidden="true">🍽️</span><span>First: Set the table</span></div><span class="qarrow" aria-hidden="true">→</span><div class="pc" data-e="🍦" data-w="Dessert"><span class="e" aria-hidden="true">🍦</span><span>Then: Dessert</span></div></div><div class="who">Meals</div></div>
       </div>
     </section>
 
@@ -884,9 +884,12 @@ body.ft-open .lki{display:none}
       <h2>Guides</h2>
       <div class="more">
         <a href="printable/"><span class="e" aria-hidden="true">🖨️</span><span><b>Free printable First-Then board (PDF)</b><small>Blank templates and label cards, A4 and US Letter.</small></span></a>
+        <a href="first-then-chart/"><span class="e" aria-hidden="true">📋</span><span><b>First-Then chart, schedule or board?</b><small>The names, what the tool looks like, and 18 examples.</small></span></a>
         <a href="first-then-next/"><span class="e" aria-hidden="true">3️⃣</span><span><b>First-Then-Next board</b><small>The 3-card board: what it is and when a child is ready.</small></span></a>
         <a href="autism/"><span class="e" aria-hidden="true">🧩</span><span><b>First-Then board for autism</b><small>How to start, photos or icons, and how to fade it out.</small></span></a>
         <a href="toddlers/"><span class="e" aria-hidden="true">🧸</span><span><b>First-Then board for toddlers</b><small>Tiny tasks, tiny rewards, potty training and tantrums.</small></span></a>
+        <a href="classroom/"><span class="e" aria-hidden="true">🏫</span><span><b>First-Then board in the classroom</b><small>For teachers: where to put it, what to put on it, common mistakes.</small></span></a>
+        <a href="speech-therapy/"><span class="e" aria-hidden="true">🗣️</span><span><b>First-Then board for speech therapy and ABA</b><small>How to run a session with it, and what to send home.</small></span></a>
         <a href="first-then-vs-visual-schedule/"><span class="e" aria-hidden="true">⚖️</span><span><b>First-Then board vs visual schedule vs token board</b><small>A simple table: when to use which.</small></span></a>
       </div>
     </section>
@@ -905,7 +908,7 @@ body.ft-open .lki{display:none}
     <p>First Then Board · first-then.app · No cookies · No ads · Your data stays on your device.</p>
     <p>Made by Natalia Jakubczyk-Gajewska · Apps for Parents · <a href="mailto:appsforparents@gmail.com">appsforparents@gmail.com</a> · <a href="privacy.html">Privacy</a></p>
     <p>Icons are your device's emoji.</p>
-    <p>v1.6.0</p>
+    <p>v1.6.1</p>
   </footer>
 </div>
 
@@ -1394,7 +1397,7 @@ const BOARD_TEMPLATES = [
   { emoji: "🌙", name: "Bedtime", pairs: () => [
     newPair(ic("🛁","Bath"), ic("🧸","Play")),
     newPair(ic("🪥","Brush teeth"), ic("📚","Story")),
-    newPair(ic("👕","Pyjamas"), ic("🛏️","Bed")),
+    newPair(ic("👕","Pajamas"), ic("🛏️","Bed")),
   ]},
   { emoji: "🏫", name: "School", pairs: () => [
     newPair(ic("🪑","Sit down"), ic("🎵","Music")),
